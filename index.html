@@ -116,7 +116,8 @@ h1{
 }
 .panel.active{display:block;animation:panelIn .28s ease both}
 @keyframes panelIn{from{opacity:0;transform:translateY(9px)}to{opacity:1;transform:translateY(0)}}
-.head{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;margin-bottom:27px}
+.head{display:flex;justify-content:flex-start;align-items:flex-start;gap:16px;margin-bottom:27px}
+.head .back{order:-1;flex:0 0 auto}
 .head h2{font-size:clamp(23px,3vw,30px);letter-spacing:-.8px;margin:0 0 8px;font-weight:850}
 .head p{font-size:14px;color:var(--muted);margin:0;line-height:1.6}
 .back,.secondary{
@@ -381,7 +382,8 @@ footer{color:#897A98}
 <section class="panel" id="documentsPanel"><div class="head"><div><h2 id="documentsPanelTitle">School Documents</h2><p id="documentsPanelDesc">Select the document you wish to request.</p></div><button class="back" data-request>← Back</button></div><div id="documentTypes" class="choices"></div><div class="status" id="documentStatus">Document types will load from the backend.</div></section>
 <section class="panel" id="appearancePanel"><div class="head"><div><h2>Certificate of Appearance</h2><p>Request a certificate for your school or office transaction.</p></div><button class="back" data-request>← Back</button></div><div class="fields"><div class="field full"><label for="appName">Full name</label><input id="appName" placeholder="Enter your full name"></div><div class="field"><label for="appDate">Date of appearance</label><input id="appDate" type="date"></div><div class="field"><label for="appPurpose">Purpose</label><input id="appPurpose" placeholder="Reason for appearance"></div></div><div class="notice">Prototype only. Submission will be enabled after the API connection and request workflow are verified.</div><div class="actions"><button class="primary" disabled>Submit request</button></div></section>
 <section class="panel" id="docForm"><div class="head"><div><h2 id="selectedDoc">Document Request</h2><p id="selectedDesc">Complete the required information.</p></div><button class="back" data-docs>← Back</button></div><div class="fields"><div class="field full"><label for="studentName">Student name</label><input id="studentName" placeholder="Enter student name"></div><div class="field"><label for="lrn">Learner Reference Number (LRN)</label><input id="lrn" placeholder="Optional"></div><div class="field"><label for="grade">Grade level</label><input id="grade" placeholder="e.g. Grade 6"></div><div class="field"><label for="sy">School year</label><input id="sy" placeholder="e.g. 2026–2027"></div><div class="field"><label for="purpose">Purpose</label><input id="purpose" placeholder="Purpose of request"></div></div><div class="notice">Prototype form only. No personal information is sent or stored.</div></section>
-<section class="panel" id="adminPanel"><div class="head"><div><h2 id="adminPanelTitle">Administrator Access</h2><p id="adminPanelDesc">Enter your six-digit administrator PIN.</p></div><button class="back" data-home>← Back</button></div><div class="field" style="max-width:340px"><label for="pin">Administrator PIN</label><input id="pin" type="password" inputmode="numeric" maxlength="6" placeholder="••••••" autocomplete="current-password"></div><div class="notice">Administrator authentication will be connected after the browser-to-API communication test.</div><div class="actions"><button class="primary" disabled>Sign in</button></div></section>
+<section class="panel" id="adminPanel"><div class="head"><div><h2 id="adminPanelTitle">Administrator Access</h2><p id="adminPanelDesc">Enter your six-digit administrator PIN.</p></div><button class="back" data-home>← Back</button></div><div class="field" style="max-width:340px"><label for="pin">Administrator PIN</label><input id="pin" type="password" inputmode="numeric" maxlength="6" pattern="[0-9]{6}" placeholder="Enter 6-digit PIN" autocomplete="current-password"></div><div class="notice" id="adminNotice" role="status" aria-live="polite">Sign in using your administrator PIN.</div><div class="actions"><button class="primary" id="adminSignIn" type="button">Sign in</button></div></section>
+<section class="panel" id="adminDashboard"><div class="head"><div><h2>Administrator Dashboard</h2><p>DES iDocs administration session</p></div><button class="back" id="adminLogout" type="button">Sign out</button></div><div class="notice" id="adminWelcome" role="status">Administrator authentication successful.</div><p style="color:var(--muted);margin-top:18px">Your administrator session is active. The transaction dashboard and management tools will be added in the next development step.</p></section>
 <div class="api"><span class="dot" id="apiDot"></span><span id="apiLabel">API connection not yet tested</span></div>
 </main><footer>DES iDocs <span aria-hidden="true">✦</span> Making school services simpler · Daplian Elementary School</footer>
 <div class="overlay" id="languageOverlay"><div class="langcard" role="dialog" aria-modal="true" aria-labelledby="langHeading"><img class="brand-icon lang-icon" src="./iDocs-icon.png" alt="DES iDocs logo"><h2 id="langHeading">Please choose your language.</h2><p>Pumili san lenggwahe.</p><div class="langs"><button class="selected" data-lang="en">English</button><button data-lang="min">Minasbate</button></div><button class="primary continue" id="continue">Continue</button></div></div>
@@ -407,6 +409,89 @@ async function loadTypes(){
   status.className='status ok';status.textContent='Connected. '+data.documentTypes.length+' active document types loaded.';document.getElementById('apiDot').className='dot ok';document.getElementById('apiLabel').textContent='Backend reachable · document types loaded';
  }catch(err){status.className='status error';status.textContent='Could not load document types: '+err.message+'. This may be a browser cross-origin (CORS) restriction.';document.getElementById('apiDot').className='dot error';document.getElementById('apiLabel').textContent='Browser-to-API connection needs testing'}
 }
+// Administrator authentication: PIN is sent directly to the Apps Script API.
+let adminToken = sessionStorage.getItem('desIdocsAdminToken') || '';
+let adminInactivityTimer = null;
+const ADMIN_IDLE_LIMIT = 30 * 60 * 1000;
+const adminPinInput = document.getElementById('pin');
+const adminSignInButton = document.getElementById('adminSignIn');
+const adminNotice = document.getElementById('adminNotice');
+
+function setAdminNotice(message, type='') {
+  adminNotice.textContent = message;
+  adminNotice.className = type === 'error' ? 'notice error' : 'notice';
+}
+function clearAdminSession(message='Your administrator session has ended. Please sign in again.') {
+  adminToken = '';
+  sessionStorage.removeItem('desIdocsAdminToken');
+  if (adminInactivityTimer) clearTimeout(adminInactivityTimer);
+  adminInactivityTimer = null;
+  adminPinInput.value = '';
+  show('adminPanel');
+  setAdminNotice(message, 'error');
+}
+function refreshAdminInactivityTimer() {
+  if (!adminToken) return;
+  if (adminInactivityTimer) clearTimeout(adminInactivityTimer);
+  adminInactivityTimer = setTimeout(() => {
+    const expiredToken = adminToken;
+    clearAdminSession();
+    fetch(API_URL, {method:'POST', headers:{'Content-Type':'text/plain;charset=utf-8'}, body:JSON.stringify({action:'adminLogout',token:expiredToken})}).catch(()=>{});
+  }, ADMIN_IDLE_LIMIT);
+}
+async function adminApi(action, extra={}) {
+  const response = await fetch(API_URL, {
+    method:'POST',
+    headers:{'Content-Type':'text/plain;charset=utf-8'},
+    body:JSON.stringify({action, ...extra})
+  });
+  if (!response.ok) throw new Error('HTTP ' + response.status);
+  return response.json();
+}
+async function signInAdmin() {
+  const pin = adminPinInput.value.trim();
+  if (!/^\d{6}$/.test(pin)) {
+    setAdminNotice('Please enter your complete six-digit administrator PIN.', 'error');
+    adminPinInput.focus();
+    return;
+  }
+  adminSignInButton.disabled = true;
+  adminSignInButton.textContent = 'Signing in…';
+  setAdminNotice('Verifying administrator PIN…');
+  try {
+    const result = await adminApi('adminLogin', {pin});
+    if (!result || result.ok !== true || !result.token) {
+      const message = result?.error?.message || 'Sign-in failed. Please check your PIN and try again.';
+      setAdminNotice(message, 'error');
+      adminPinInput.select();
+      return;
+    }
+    adminToken = result.token;
+    sessionStorage.setItem('desIdocsAdminToken', adminToken);
+    adminPinInput.value = '';
+    document.getElementById('adminWelcome').textContent = 'You are signed in. Your administrator session will expire after 30 minutes of inactivity.';
+    refreshAdminInactivityTimer();
+    show('adminDashboard');
+  } catch (error) {
+    setAdminNotice('Could not contact the administrator service: ' + error.message + '. If the document list loads but sign-in does not, we will check the browser-to-API POST connection.', 'error');
+  } finally {
+    adminSignInButton.disabled = false;
+    adminSignInButton.textContent = 'Sign in';
+  }
+}
+adminSignInButton.addEventListener('click', signInAdmin);
+adminPinInput.addEventListener('keydown', event => { if (event.key === 'Enter') signInAdmin(); });
+document.getElementById('adminLogout').addEventListener('click', async () => {
+  const token = adminToken;
+  clearAdminSession('You have signed out.');
+  if (token) {
+    try { await adminApi('adminLogout', {token}); } catch (error) { console.warn('Server logout could not be confirmed:', error); }
+  }
+});
+['pointerdown','keydown','touchstart','mousemove'].forEach(eventName => {
+  document.addEventListener(eventName, () => { if (adminToken) refreshAdminInactivityTimer(); }, {passive:true});
+});
+
 applyLang();
 </script>
 </body></html>
