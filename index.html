@@ -201,21 +201,183 @@ footer{text-align:center;padding:25px 16px 34px;color:#928da0;font-size:11px}
   .api{width:fit-content;border-radius:14px;text-align:center}
 }
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;animation-duration:.01ms!important;transition-duration:.01ms!important}}
+
+/* ===== DES iDocs richer violet visual system ===== */
+:root{
+  --p:#7131D2;--pd:#4A168F;--pl:#A66BFF;--soft:#EEE2FF;
+  --ink:#211333;--muted:#70647F;--line:#E2D5F2;--page:#F4EFFB;
+  --shadow:0 18px 50px rgba(54,22,91,.12)
+}
+body{
+  background:
+    radial-gradient(ellipse at 5% 30%,rgba(160,105,255,.20),transparent 34rem),
+    radial-gradient(ellipse at 95% 65%,rgba(102,51,177,.13),transparent 36rem),
+    linear-gradient(135deg,#F8F4FF 0%,#F0E9FA 55%,#F8F5FC 100%);
+}
+.topbar{
+  min-height:154px;padding:20px clamp(22px,6vw,92px);
+  background:
+    radial-gradient(circle at 82% 5%,rgba(196,155,255,.22),transparent 22rem),
+    linear-gradient(112deg,#35105F 0%,#51158F 42%,#7027C2 76%,#4B1689 100%);
+  border:0;border-bottom:1px solid rgba(255,255,255,.18);
+  box-shadow:0 10px 32px rgba(47,13,83,.22);
+}
+.brand{gap:22px}
+.brand-icon{
+  width:96px;height:96px;max-width:96px;flex:0 0 96px;
+  border-radius:22px;object-fit:contain;background:#fff;
+  padding:3px;box-shadow:0 9px 26px rgba(16,4,34,.26);
+}
+.brand-copy{display:flex;flex-direction:column;gap:3px}
+.school-kicker{
+  color:#E8D6FF;font-size:13px;font-weight:900;letter-spacing:2.5px;
+  line-height:1.3
+}
+.brandname{
+  color:#fff;font-size:clamp(38px,4.2vw,53px);font-weight:950;
+  line-height:1.02;letter-spacing:-1.8px
+}
+.sub{color:#E7D8F7;font-size:15px;margin-top:4px;letter-spacing:.1px}
+.hub{
+  color:#4B1689;background:#fff;border:1px solid rgba(255,255,255,.6);
+  border-radius:15px;padding:13px 18px;font-size:14px;
+  box-shadow:0 7px 18px rgba(26,6,51,.2)
+}
+.hub:hover{background:#F5EDFF;border-color:#fff}
+.hub-icon{width:34px!important;height:34px!important;max-width:34px!important;max-height:34px!important;flex:0 0 34px!important;border-radius:9px}
+main{width:min(1360px,calc(100% - 48px));padding:48px 0 70px}
+.welcome{
+  max-width:1120px;text-align:left;margin:0 auto 30px;padding:10px 0 0
+}
+.welcome:before{width:280px;height:280px;left:auto;right:8%;top:-40px;background:radial-gradient(circle,rgba(166,107,255,.17),transparent 70%)}
+.welcome:after{width:230px;height:230px;right:-8%;bottom:-40px;background:radial-gradient(circle,rgba(92,36,156,.12),transparent 70%)}
+.eyebrow{
+  color:#5A219C;background:#EDE1FC;border:1px solid #DCC8F5;
+  font-size:11px;letter-spacing:2px;padding:9px 15px
+}
+.eyebrow:before{background:#7433D0;box-shadow:0 0 0 4px #DDC9F8}
+h1{
+  color:#54218F;background:none;-webkit-text-fill-color:initial;
+  font-size:clamp(36px,4vw,48px);letter-spacing:-1.4px;
+  margin:18px 0 9px
+}
+.welcome p{margin:0;max-width:760px;color:#655574;font-size:16px}
+.grid{
+  max-width:1120px;margin:32px auto 0;gap:24px;
+  grid-template-columns:repeat(2,minmax(0,1fr))
+}
+.menu{
+  min-height:230px;padding:28px 32px 25px 122px;border-radius:22px;
+  background:linear-gradient(125deg,#fff 0%,#F8F2FF 100%);
+  border:1px solid #E0D1F2;box-shadow:0 9px 24px rgba(55,20,91,.08)
+}
+.menu:after{
+  width:250px;height:250px;right:-105px;top:-120px;
+  background:linear-gradient(145deg,rgba(141,79,220,.18),rgba(141,79,220,0))
+}
+.mi{
+  position:absolute;left:28px;top:50%;transform:translateY(-50%);
+  width:76px;height:76px;border-radius:50%;
+  background:linear-gradient(145deg,#E9D6FF,#C9A5F5 65%,#B58AEF);
+  color:#4A168F;font-size:39px;
+  box-shadow:inset 0 2px 4px rgba(255,255,255,.9),0 8px 18px rgba(88,37,145,.17);
+  border:1px solid rgba(255,255,255,.8)
+}
+.menu h2{font-size:23px;color:#32134F;margin:20px 0 9px}
+.menu p{font-size:14px;max-width:420px;color:#746482}
+.arrow{color:#6326AE;font-size:13px;margin-top:18px}
+.panel{
+  max-width:1120px;border-radius:24px;padding:clamp(24px,3.5vw,42px);
+  background:linear-gradient(135deg,#fff 0%,#FCFAFF 68%,#F7F0FF 100%);
+  border-color:#E0D2F0;box-shadow:0 18px 52px rgba(54,22,91,.11)
+}
+.panel:before{height:7px;background:linear-gradient(90deg,#451276,#7131D2 45%,#B98BFA)}
+.head h2{color:#4E1A83;font-size:clamp(25px,3vw,32px)}
+.head p{color:#756482}
+.back,.secondary{border-color:#DCCCF0;color:#54218F;background:#fff}
+.back:hover,.secondary:hover{background:#F1E6FF;border-color:#B995E6}
+.choices{gap:16px}
+.choice{
+  min-height:100px;border-radius:17px;padding:18px 20px;
+  background:linear-gradient(115deg,#fff,#F8F2FF);
+  border-color:#E2D4F1;box-shadow:0 5px 15px rgba(62,27,99,.045)
+}
+.choice:hover{background:linear-gradient(115deg,#fff,#F0E4FF);border-color:#B995E6}
+.choice strong{font-size:15px;color:#321747}
+.choice small{font-size:13px;color:#786987}
+.chev{font-size:28px;color:#7131D2}
+.service-choice,.document-choice{display:flex;align-items:center;gap:17px}
+.choice-copy{display:block;min-width:0;flex:1}
+.service-icon{
+  width:68px;height:68px;min-width:68px;border-radius:50%;
+  display:grid;place-items:center;font-size:35px;line-height:1;
+  background:linear-gradient(145deg,#F0E2FF,#D5B9FA);
+  border:1px solid #E7D7F8;
+  box-shadow:inset 0 2px 3px rgba(255,255,255,.9),0 6px 14px rgba(84,32,139,.11)
+}
+.document-choice{min-height:94px}
+.document-choice .service-icon{width:58px;height:58px;min-width:58px;font-size:30px}
+.notice{
+  background:linear-gradient(105deg,#F0E5FF,#F8F3FF);
+  border:1px solid #E5D5F8;color:#58318A;border-radius:15px;padding:16px 19px
+}
+.api{
+  background:rgba(255,255,255,.82);border-color:#E3D7F0;
+  color:#695879;font-size:12px;padding:12px 18px
+}
+footer{color:#897A98}
+.langcard{border-radius:25px;border-color:#E7D9F6}
+.langcard:before{background:linear-gradient(90deg,#42106E,#7431D1,#B78AF6)}
+.primary{background:linear-gradient(110deg,#7131D2,#4D168C)}
+@media(max-width:760px){
+  .topbar{min-height:116px;padding:14px 18px;gap:12px}
+  .brand{gap:12px}.brand-icon{width:68px;height:68px;max-width:68px;flex-basis:68px;border-radius:16px}
+  .school-kicker{font-size:9px;letter-spacing:1.5px}
+  .brandname{font-size:35px}.sub{font-size:11px;max-width:240px}
+  .hub{padding:9px 10px;font-size:0;gap:6px}.hub span{font-size:0}.hub span:last-child{font-size:16px}
+  .hub-icon{width:30px!important;height:30px!important;max-width:30px!important;max-height:30px!important;flex-basis:30px!important}
+  main{width:min(100% - 28px,680px);padding:30px 0 54px}
+  .welcome{padding-top:4px;margin-bottom:23px}
+  .grid{grid-template-columns:1fr;gap:15px;margin-top:23px}
+  .menu{min-height:175px;padding:23px 22px 22px 104px}
+  .mi{left:20px;width:66px;height:66px;font-size:34px}
+  .menu h2{font-size:20px;margin-top:14px}
+  .service-icon{width:58px;height:58px;min-width:58px;font-size:30px}
+  .document-choice .service-icon{width:50px;height:50px;min-width:50px;font-size:26px}
+}
+@media(max-width:420px){
+  .school-kicker{font-size:8px;letter-spacing:1px}
+  .brandname{font-size:30px}.sub{font-size:10px;max-width:190px}
+  .brand-icon{width:58px;height:58px;max-width:58px;flex-basis:58px}
+  .menu{padding-left:92px}.mi{left:16px;width:60px;height:60px;font-size:31px}
+  .service-choice,.document-choice{gap:11px;padding:14px}
+}
+
 </style>
   <link rel="icon" type="image/png" sizes="512x512" href="./iDocs-icon.png">
   <link rel="apple-touch-icon" href="./iDocs-icon.png">
   <meta name="theme-color" content="#7537DF">
 </head>
 <body>
-<header class="topbar"><div class="brand"><img class="brand-icon" src="./iDocs-icon.png" alt="DES iDocs logo"><div><div class="brandname">DES iDocs</div><div class="sub">Document Generation System</div></div></div><a class="hub" href="#" id="hubLink"><img src="./iApps-icon.png" alt="" class="hub-icon">Go to iApps Dashboard <span aria-hidden="true">↗</span></a></header>
+<header class="topbar">
+  <div class="brand">
+    <img class="brand-icon" src="./iDocs-icon.png" alt="DES iDocs logo">
+    <div class="brand-copy">
+      <div class="school-kicker">DAPLIAN ELEMENTARY SCHOOL</div>
+      <div class="brandname">iDocs</div>
+      <div class="sub">School Document Request &amp; Generation Portal</div>
+    </div>
+  </div>
+  <a class="hub" href="#" id="hubLink"><img src="./iApps-icon.png" alt="" class="hub-icon"><span>Go to iApps Dashboard</span><span aria-hidden="true">↗</span></a>
+</header>
 <main>
 <section class="welcome" id="home"><div class="eyebrow">Daplian Elementary School · Digital Services</div><h1 id="welcomeTitle">Documents made simpler.</h1><p id="welcomeText">Request school documents and certificates through the DES iDocs online service.</p>
 <div class="grid">
-<button class="menu" id="requestMenu"><span class="mi">▤</span><h2 id="requestTitle">Request Documents</h2><p id="requestDesc">Request school records, certifications, and certificates of appearance.</p><span class="arrow" id="requestArrow">Explore services →</span></button>
-<button class="menu" id="adminMenu"><span class="mi">⌘</span><h2 id="adminTitle">Administrator</h2><p id="adminDesc">Access transaction management and document generation tools.</p><span class="arrow" id="adminArrow">Administrator access →</span></button>
+<button class="menu" id="requestMenu"><span class="mi" aria-hidden="true">📚</span><h2 id="requestTitle">Request Documents</h2><p id="requestDesc">Request school records, certifications, and certificates of appearance.</p><span class="arrow" id="requestArrow">Explore services →</span></button>
+<button class="menu" id="adminMenu"><span class="mi" aria-hidden="true">🗂️</span><h2 id="adminTitle">Administrator</h2><p id="adminDesc">Access transaction management and document generation tools.</p><span class="arrow" id="adminArrow">Administrator access →</span></button>
 </div></section>
 <section class="panel" id="requestPanel"><div class="head"><div><h2 id="requestPanelTitle">Request Documents</h2><p id="requestPanelDesc">Choose the service you need.</p></div><button class="back" data-home>← <span id="backText">Back</span></button></div>
-<div class="choices"><button class="choice" id="schoolDocs"><span><strong id="schoolDocsTitle">School Documents</strong><small id="schoolDocsDesc">Certificates and school records</small></span><span class="chev">›</span></button><button class="choice" id="appearance"><span><strong id="appearanceTitle">Certificate of Appearance</strong><small id="appearanceDesc">Request an appearance certificate</small></span><span class="chev">›</span></button></div><div class="notice" id="requestNotice">Select a service to continue. Document requirements will be displayed before you submit a request.</div></section>
+<div class="choices"><button class="choice service-choice" id="schoolDocs"><span class="service-icon" aria-hidden="true">📚</span><span class="choice-copy"><strong id="schoolDocsTitle">School Documents</strong><small id="schoolDocsDesc">Certificates and school records</small></span><span class="chev">›</span></button><button class="choice service-choice" id="appearance"><span class="service-icon" aria-hidden="true">🧾</span><span class="choice-copy"><strong id="appearanceTitle">Certificate of Appearance</strong><small id="appearanceDesc">Request an appearance certificate</small></span><span class="chev">›</span></button></div><div class="notice" id="requestNotice">Select a service to continue. Document requirements will be displayed before you submit a request.</div></section>
 <section class="panel" id="documentsPanel"><div class="head"><div><h2 id="documentsPanelTitle">School Documents</h2><p id="documentsPanelDesc">Select the document you wish to request.</p></div><button class="back" data-request>← Back</button></div><div id="documentTypes" class="choices"></div><div class="status" id="documentStatus">Document types will load from the backend.</div></section>
 <section class="panel" id="appearancePanel"><div class="head"><div><h2>Certificate of Appearance</h2><p>Request a certificate for your school or office transaction.</p></div><button class="back" data-request>← Back</button></div><div class="fields"><div class="field full"><label for="appName">Full name</label><input id="appName" placeholder="Enter your full name"></div><div class="field"><label for="appDate">Date of appearance</label><input id="appDate" type="date"></div><div class="field"><label for="appPurpose">Purpose</label><input id="appPurpose" placeholder="Reason for appearance"></div></div><div class="notice">Prototype only. Submission will be enabled after the API connection and request workflow are verified.</div><div class="actions"><button class="primary" disabled>Submit request</button></div></section>
 <section class="panel" id="docForm"><div class="head"><div><h2 id="selectedDoc">Document Request</h2><p id="selectedDesc">Complete the required information.</p></div><button class="back" data-docs>← Back</button></div><div class="fields"><div class="field full"><label for="studentName">Student name</label><input id="studentName" placeholder="Enter student name"></div><div class="field"><label for="lrn">Learner Reference Number (LRN)</label><input id="lrn" placeholder="Optional"></div><div class="field"><label for="grade">Grade level</label><input id="grade" placeholder="e.g. Grade 6"></div><div class="field"><label for="sy">School year</label><input id="sy" placeholder="e.g. 2026–2027"></div><div class="field"><label for="purpose">Purpose</label><input id="purpose" placeholder="Purpose of request"></div></div><div class="notice">Prototype form only. No personal information is sent or stored.</div></section>
@@ -241,7 +403,7 @@ async function loadTypes(){
  try{
   const res=await fetch(API_URL+'?action=getDocumentTypes',{method:'GET',redirect:'follow'});if(!res.ok)throw Error('HTTP '+res.status);
   const data=await res.json();if(!data.ok||!Array.isArray(data.documentTypes))throw Error(data.error?.message||'Unexpected API response');
-  data.documentTypes.forEach(doc=>{const b=document.createElement('button');b.className='choice';const s=document.createElement('span'),strong=document.createElement('strong'),small=document.createElement('small'),arrow=document.createElement('span');strong.textContent=doc.DocumentName;small.textContent=doc.Description||'School document';arrow.className='chev';arrow.textContent='›';s.append(strong,small);b.append(s,arrow);b.onclick=()=>{document.getElementById('selectedDoc').textContent=doc.DocumentName;document.getElementById('selectedDesc').textContent=doc.Description||'Complete the required information.';document.getElementById('studentName').required=!!doc.RequiresStudentDetails;document.getElementById('sy').required=!!doc.RequiresSchoolYear;document.getElementById('purpose').required=!!doc.RequiresPurpose;show('docForm')};list.append(b)});
+  data.documentTypes.forEach(doc=>{const b=document.createElement('button');b.className='choice document-choice';const icon=document.createElement('span');icon.className='service-icon';icon.setAttribute('aria-hidden','true');const name=doc.DocumentName.toLowerCase();icon.textContent=name.includes('enrollment')?'🎓':name.includes('moral')?'🏅':name.includes('grades')?'📊':name.includes('transfer')?'📦':name.includes('record')?'🗃️':name.includes('137')?'📄':name.includes('4ps')?'🤝':name.includes('form 9')?'📋':name.includes('completion')?'🏆':'📑';const s=document.createElement('span');s.className='choice-copy';const strong=document.createElement('strong'),small=document.createElement('small'),arrow=document.createElement('span');strong.textContent=doc.DocumentName;small.textContent=doc.Description||'School document';arrow.className='chev';arrow.textContent='›';s.append(strong,small);b.append(icon,s,arrow);b.onclick=()=>{document.getElementById('selectedDoc').textContent=doc.DocumentName;document.getElementById('selectedDesc').textContent=doc.Description||'Complete the required information.';document.getElementById('studentName').required=!!doc.RequiresStudentDetails;document.getElementById('sy').required=!!doc.RequiresSchoolYear;document.getElementById('purpose').required=!!doc.RequiresPurpose;show('docForm')};list.append(b)});
   status.className='status ok';status.textContent='Connected. '+data.documentTypes.length+' active document types loaded.';document.getElementById('apiDot').className='dot ok';document.getElementById('apiLabel').textContent='Backend reachable · document types loaded';
  }catch(err){status.className='status error';status.textContent='Could not load document types: '+err.message+'. This may be a browser cross-origin (CORS) restriction.';document.getElementById('apiDot').className='dot error';document.getElementById('apiLabel').textContent='Browser-to-API connection needs testing'}
 }
