@@ -354,6 +354,41 @@ footer{color:#897A98}
   .service-choice,.document-choice{gap:11px;padding:14px}
 }
 
+
+/* Administrator dashboard */
+.admin-welcome{display:flex;align-items:center;gap:14px;padding:17px 19px;margin:0 0 28px;border-radius:16px;background:linear-gradient(110deg,#F0E4FF,#FAF6FF);border:1px solid #E3D3F6;color:#4E1A83}
+.admin-welcome-icon{width:48px;height:48px;display:grid;place-items:center;border-radius:50%;background:#DCC3FA;font-size:25px;flex:none}
+.admin-welcome strong,.admin-welcome small{display:block}.admin-welcome strong{font-size:14px}.admin-welcome small{font-size:12px;color:#766487;margin-top:4px}
+.dashboard-section-title{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:25px 0 13px;color:#512084}
+.dashboard-section-title span{font-size:12px;font-weight:900;letter-spacing:1.5px}
+.dashboard-section-title small{font-size:11px;color:var(--muted);font-weight:500;letter-spacing:0}
+.stats-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:13px}
+.stat-card{position:relative;display:flex;flex-direction:column;align-items:flex-start;min-height:135px;padding:17px 19px;border:1px solid #E5D9F2;border-radius:17px;background:linear-gradient(140deg,#fff,#FAF7FF);overflow:hidden}
+.stat-card:after{content:"";position:absolute;width:100px;height:100px;border-radius:50%;right:-35px;bottom:-42px;background:currentColor;opacity:.055}
+.stat-icon{font-size:25px;margin-bottom:9px}.stat-value{font-size:31px;line-height:1;font-weight:900;letter-spacing:-1px;color:#39204F}.stat-label{font-size:12px;color:#766887;font-weight:700;margin-top:7px}
+.stat-total{border-top:4px solid #7131D2}.stat-pending{border-top:4px solid #D28A24}.stat-processing{border-top:4px solid #3975C8}.stat-ready{border-top:4px solid #8B59CE}.stat-released{border-top:4px solid #27945B}.stat-rejected{border-top:4px solid #C64D5C}
+.dashboard-split{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:15px}
+.summary-card{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:18px 20px;border:1px solid #E4D8F1;border-radius:17px;background:#fff}
+.summary-heading{display:flex;align-items:center;gap:12px;min-width:0}.summary-icon{width:45px;height:45px;border-radius:50%;display:grid;place-items:center;background:#EFE3FF;font-size:23px;flex:none}
+.summary-heading strong,.summary-heading small{display:block}.summary-heading strong{font-size:13px;color:#3D2454}.summary-heading small{font-size:11px;color:#84758F;margin-top:4px}
+.summary-number{font-size:28px;color:#57218F;font-weight:900}
+.recent-card{margin-top:24px;border:1px solid #E4D8F1;border-radius:18px;background:#fff;overflow:hidden}
+.recent-heading{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:20px 21px;border-bottom:1px solid #EEE7F5}
+.recent-heading h3{font-size:18px;color:#42205F;margin:0 0 5px}.recent-heading p{font-size:12px;color:#857791;margin:0}
+.table-wrap{width:100%;overflow-x:auto}.recent-table{width:100%;border-collapse:collapse;min-width:600px}
+.recent-table th{text-align:left;background:#F8F4FC;color:#79688A;font-size:10px;letter-spacing:1px;padding:12px 16px;font-weight:900}
+.recent-table td{padding:14px 16px;border-top:1px solid #F0EAF5;font-size:12px;color:#4C3C5B}
+.recent-table td:first-child{font-weight:750;color:#39204F}.table-empty{text-align:center!important;color:#887A93!important;padding:25px!important}
+.status-pill{display:inline-flex;align-items:center;padding:5px 10px;border-radius:99px;font-size:10px;font-weight:850;white-space:nowrap;background:#F0EAF7;color:#654A80}
+.status-pending{background:#FFF1D8;color:#9A620D}.status-processing{background:#E5F0FF;color:#285C9C}.status-ready{background:#F0E5FF;color:#6A36A8}.status-released{background:#DFF5E8;color:#167444}.status-rejected{background:#FCE6E8;color:#AD3544}
+.recent-foot{padding:11px 17px;color:#8A7D95;font-size:11px;border-top:1px solid #F0EAF5}
+.admin-tools-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:13px}
+.admin-tool-card{display:flex;flex-direction:column;align-items:flex-start;gap:7px;padding:17px;border:1px solid #E5D9F2;border-radius:16px;background:linear-gradient(145deg,#fff,#FAF6FF)}
+.admin-tool-card>span{font-size:27px}.admin-tool-card strong{font-size:13px;color:#482269}.admin-tool-card small{font-size:11px;color:#83748E;line-height:1.5}.admin-tool-card em{font-style:normal;font-size:10px;font-weight:800;color:#7540B1;margin-top:3px}
+.tools-title{margin-top:28px}
+@media(max-width:700px){.stats-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.dashboard-split{grid-template-columns:1fr}.admin-tools-grid{grid-template-columns:1fr}.dashboard-section-title{align-items:flex-start;flex-direction:column;gap:4px}.admin-head{align-items:center}}
+@media(max-width:420px){.stat-card{min-height:120px;padding:14px}.stat-value{font-size:27px}.summary-card{padding:14px}.recent-heading{padding:16px}}
+
 </style>
   <link rel="icon" type="image/png" sizes="512x512" href="./iDocs-icon.png">
   <link rel="apple-touch-icon" href="./iDocs-icon.png">
@@ -383,7 +418,55 @@ footer{color:#897A98}
 <section class="panel" id="appearancePanel"><div class="head"><div><h2>Certificate of Appearance</h2><p>Request a certificate for your school or office transaction.</p></div><button class="back" data-request>← Back</button></div><div class="fields"><div class="field full"><label for="appName">Full name</label><input id="appName" placeholder="Enter your full name"></div><div class="field"><label for="appDate">Date of appearance</label><input id="appDate" type="date"></div><div class="field"><label for="appPurpose">Purpose</label><input id="appPurpose" placeholder="Reason for appearance"></div></div><div class="notice">Prototype only. Submission will be enabled after the API connection and request workflow are verified.</div><div class="actions"><button class="primary" disabled>Submit request</button></div></section>
 <section class="panel" id="docForm"><div class="head"><div><h2 id="selectedDoc">Document Request</h2><p id="selectedDesc">Complete the required information.</p></div><button class="back" data-docs>← Back</button></div><div class="fields"><div class="field full"><label for="studentName">Student name</label><input id="studentName" placeholder="Enter student name"></div><div class="field"><label for="lrn">Learner Reference Number (LRN)</label><input id="lrn" placeholder="Optional"></div><div class="field"><label for="grade">Grade level</label><input id="grade" placeholder="e.g. Grade 6"></div><div class="field"><label for="sy">School year</label><input id="sy" placeholder="e.g. 2026–2027"></div><div class="field"><label for="purpose">Purpose</label><input id="purpose" placeholder="Purpose of request"></div></div><div class="notice">Prototype form only. No personal information is sent or stored.</div></section>
 <section class="panel" id="adminPanel"><div class="head"><div><h2 id="adminPanelTitle">Administrator Access</h2><p id="adminPanelDesc">Enter your six-digit administrator PIN.</p></div><button class="back" data-home>← Back</button></div><div class="field" style="max-width:340px"><label for="pin">Administrator PIN</label><input id="pin" type="password" inputmode="numeric" maxlength="6" pattern="[0-9]{6}" placeholder="Enter 6-digit PIN" autocomplete="current-password"></div><div class="notice" id="adminNotice" role="status" aria-live="polite">Sign in using your administrator PIN.</div><div class="actions"><button class="primary" id="adminSignIn" type="button">Sign in</button></div></section>
-<section class="panel" id="adminDashboard"><div class="head"><div><h2>Administrator Dashboard</h2><p>DES iDocs administration session</p></div><button class="back" id="adminLogout" type="button">Sign out</button></div><div class="notice" id="adminWelcome" role="status">Administrator authentication successful.</div><p style="color:var(--muted);margin-top:18px">Your administrator session is active. The transaction dashboard and management tools will be added in the next development step.</p></section>
+<section class="panel" id="adminDashboard">
+<div class="head admin-head">
+  <div class="admin-heading">
+    <h2>Administrator Dashboard</h2>
+    <p>DES iDocs · School Document Request &amp; Generation Portal</p>
+  </div>
+  <button class="back" id="adminLogout" type="button">Sign out</button>
+</div>
+<div class="admin-welcome" id="adminWelcome" role="status">
+  <span class="admin-welcome-icon" aria-hidden="true">👋</span>
+  <span><strong>Welcome to DES iDocs Administration</strong><small>Your administrator session is active.</small></span>
+</div>
+<div id="dashboardError" class="notice error hidden" role="alert"></div>
+<div class="dashboard-section-title"><span>OVERVIEW</span><small>Live request statistics</small></div>
+<div class="stats-grid" id="dashboardStats">
+  <div class="stat-card stat-total"><span class="stat-icon">📚</span><span class="stat-value" id="statTotal">—</span><span class="stat-label">Total Requests</span></div>
+  <div class="stat-card stat-pending"><span class="stat-icon">⏳</span><span class="stat-value" id="statPending">—</span><span class="stat-label">Pending</span></div>
+  <div class="stat-card stat-processing"><span class="stat-icon">⚙️</span><span class="stat-value" id="statProcessing">—</span><span class="stat-label">Processing</span></div>
+  <div class="stat-card stat-ready"><span class="stat-icon">📄</span><span class="stat-value" id="statReady">—</span><span class="stat-label">Ready</span></div>
+  <div class="stat-card stat-released"><span class="stat-icon">✅</span><span class="stat-value" id="statReleased">—</span><span class="stat-label">Released</span></div>
+  <div class="stat-card stat-rejected"><span class="stat-icon">⛔</span><span class="stat-value" id="statRejected">—</span><span class="stat-label">Rejected</span></div>
+</div>
+<div class="dashboard-split">
+  <div class="summary-card">
+    <div class="summary-heading"><span class="summary-icon">🏫</span><span><strong>School Document Requests</strong><small>Requests for school records and certificates</small></span></div>
+    <strong class="summary-number" id="statSchoolDocs">—</strong>
+  </div>
+  <div class="summary-card">
+    <div class="summary-heading"><span class="summary-icon">🧾</span><span><strong>Appearance Certificates</strong><small>Requests for certificates of appearance</small></span></div>
+    <strong class="summary-number" id="statAppearances">—</strong>
+  </div>
+</div>
+<div class="recent-card">
+  <div class="recent-heading"><div><h3>Recent Transactions</h3><p>Latest requests received by the school</p></div><button class="secondary" id="refreshDashboard" type="button">↻ Refresh</button></div>
+  <div class="table-wrap">
+    <table class="recent-table">
+      <thead><tr><th>REQUESTER</th><th>DOCUMENT</th><th>DATE</th><th>STATUS</th></tr></thead>
+      <tbody id="recentTransactions"><tr><td colspan="4" class="table-empty">Loading recent transactions…</td></tr></tbody>
+    </table>
+  </div>
+  <div class="recent-foot" id="recentFoot">Showing the latest transactions</div>
+</div>
+<div class="dashboard-section-title tools-title"><span>ADMINISTRATION</span><small>Management tools will be added in the next stages</small></div>
+<div class="admin-tools-grid">
+  <div class="admin-tool-card"><span>🗂️</span><strong>Transaction History</strong><small>Search and manage submitted requests</small><em>Coming in Stage 3</em></div>
+  <div class="admin-tool-card"><span>📑</span><strong>Document Management</strong><small>Review document types and templates</small><em>Phase 2 upgrade</em></div>
+  <div class="admin-tool-card"><span>🧾</span><strong>Appearance Management</strong><small>Process appearance certificate requests</small><em>Coming in Stage 4</em></div>
+</div>
+</section>
 <div class="api"><span class="dot" id="apiDot"></span><span id="apiLabel">API connection not yet tested</span></div>
 </main><footer>DES iDocs <span aria-hidden="true">✦</span> Making school services simpler · Daplian Elementary School</footer>
 <div class="overlay" id="languageOverlay"><div class="langcard" role="dialog" aria-modal="true" aria-labelledby="langHeading"><img class="brand-icon lang-icon" src="./iDocs-icon.png" alt="DES iDocs logo"><h2 id="langHeading">Please choose your language.</h2><p>Pumili san lenggwahe.</p><div class="langs"><button class="selected" data-lang="en">English</button><button data-lang="min">Minasbate</button></div><button class="primary continue" id="continue">Continue</button></div></div>
@@ -448,6 +531,87 @@ async function adminApi(action, extra={}) {
   if (!response.ok) throw new Error('HTTP ' + response.status);
   return response.json();
 }
+
+function setDashboardError(message) {
+  const box = document.getElementById('dashboardError');
+  box.textContent = message;
+  box.classList.remove('hidden');
+}
+function clearDashboardError() {
+  const box = document.getElementById('dashboardError');
+  box.textContent = '';
+  box.classList.add('hidden');
+}
+function setStat(id, value) {
+  document.getElementById(id).textContent = String(Number(value) || 0);
+}
+function statusClass(status) {
+  const key = String(status || 'Pending').toLowerCase();
+  return ['pending','processing','ready','released','rejected'].includes(key) ? 'status-' + key : 'status-pill';
+}
+function renderRecentTransactions(items) {
+  const tbody = document.getElementById('recentTransactions');
+  tbody.replaceChildren();
+  if (!items || !items.length) {
+    const row = document.createElement('tr');
+    const cell = document.createElement('td');
+    cell.colSpan = 4;
+    cell.className = 'table-empty';
+    cell.textContent = 'No transactions have been submitted yet.';
+    row.appendChild(cell); tbody.appendChild(row);
+    document.getElementById('recentFoot').textContent = 'No transaction records found';
+    return;
+  }
+  items.forEach(item => {
+    const row = document.createElement('tr');
+    const requester = document.createElement('td');
+    requester.textContent = item.RequesterName || '—';
+    const documentName = document.createElement('td');
+    documentName.textContent = item.DocumentName || '—';
+    const date = document.createElement('td');
+    date.textContent = item.RequestDate || '—';
+    const statusCell = document.createElement('td');
+    const pill = document.createElement('span');
+    pill.className = 'status-pill ' + statusClass(item.Status);
+    pill.textContent = item.Status || 'Pending';
+    statusCell.appendChild(pill);
+    row.append(requester, documentName, date, statusCell);
+    tbody.appendChild(row);
+  });
+  document.getElementById('recentFoot').textContent = 'Showing ' + items.length + ' most recent transaction(s)';
+}
+async function loadAdminDashboard() {
+  clearDashboardError();
+  document.getElementById('recentTransactions').innerHTML = '<tr><td colspan="4" class="table-empty">Loading recent transactions…</td></tr>';
+  try {
+    const [dashboard, history] = await Promise.all([
+      adminApi('getAdminDashboard', {token: adminToken}),
+      adminApi('getTransactionHistory', {token: adminToken, filters: {page: 1, pageSize: 6}})
+    ]);
+    if (!dashboard || dashboard.ok !== true) throw new Error(dashboard?.error?.message || 'Could not load dashboard statistics.');
+    if (!history || history.ok !== true) throw new Error(history?.error?.message || 'Could not load recent transactions.');
+    const stats = dashboard.stats || {};
+    setStat('statTotal', stats.totalRequests);
+    setStat('statPending', stats.pending);
+    setStat('statProcessing', stats.processing);
+    setStat('statReady', stats.ready);
+    setStat('statReleased', stats.released);
+    setStat('statRejected', stats.rejected);
+    setStat('statSchoolDocs', stats.schoolDocumentRequests);
+    setStat('statAppearances', stats.appearanceRequests);
+    renderRecentTransactions(history.transactions || []);
+    document.getElementById('apiDot').className = 'dot ok';
+    document.getElementById('apiLabel').textContent = 'Backend connected · dashboard data loaded';
+    refreshAdminInactivityTimer();
+  } catch (error) {
+    setDashboardError('Dashboard data could not be loaded: ' + error.message + '. Use Refresh to try again.');
+    document.getElementById('recentTransactions').innerHTML = '<tr><td colspan="4" class="table-empty">Unable to load recent transactions.</td></tr>';
+    document.getElementById('apiDot').className = 'dot error';
+    document.getElementById('apiLabel').textContent = 'Backend reachable status needs attention';
+  }
+}
+document.getElementById('refreshDashboard').addEventListener('click', loadAdminDashboard);
+
 async function signInAdmin() {
   const pin = adminPinInput.value.trim();
   if (!/^\d{6}$/.test(pin)) {
@@ -469,9 +633,10 @@ async function signInAdmin() {
     adminToken = result.token;
     sessionStorage.setItem('desIdocsAdminToken', adminToken);
     adminPinInput.value = '';
-    document.getElementById('adminWelcome').textContent = 'You are signed in. Your administrator session will expire after 30 minutes of inactivity.';
+    document.getElementById('adminWelcome').querySelector('small').textContent = 'You are signed in. Your session expires after 30 minutes of inactivity.';
     refreshAdminInactivityTimer();
     show('adminDashboard');
+    await loadAdminDashboard();
   } catch (error) {
     setAdminNotice('Could not contact the administrator service: ' + error.message + '. If the document list loads but sign-in does not, we will check the browser-to-API POST connection.', 'error');
   } finally {
