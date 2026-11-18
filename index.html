@@ -11,6 +11,8 @@
   font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif
 }
 *{box-sizing:border-box}
+img{max-width:100%;height:auto}
+.hub-icon{height:25px!important;width:25px!important;max-width:25px!important;max-height:25px!important;object-fit:contain;flex:0 0 25px}
 html{scroll-behavior:smooth}
 body{
   margin:0;color:var(--ink);min-height:100vh;
@@ -32,6 +34,7 @@ button,input{font:inherit}button{cursor:pointer}
   display:block;
   width:58px;
   height:58px;
+  max-width:58px;
   flex:0 0 58px;
   object-fit:contain;
   border-radius:16px;
@@ -40,6 +43,7 @@ button,input{font:inherit}button{cursor:pointer}
 .lang-icon{
   width:76px;
   height:76px;
+  max-width:76px;
   flex-basis:76px;
   margin:0 auto 20px;
   border-radius:20px;
@@ -47,11 +51,13 @@ button,input{font:inherit}button{cursor:pointer}
 .brandname{font-size:21px;font-weight:850;letter-spacing:-.7px}
 .sub{font-size:12px;color:var(--muted);margin-top:4px;letter-spacing:.1px}
 .hub{
+  display:inline-flex;align-items:center;gap:9px;
   font-size:13px;font-weight:750;color:var(--pd);text-decoration:none;
   border:1px solid #e5d9fa;border-radius:13px;padding:12px 16px;
   white-space:nowrap;background:#fff;transition:.2s
 }
-.hub:hover{background:#F7F1FF;border-color:#cdb8f5;transform:translateY(-1px)}\n.hub-icon{width:25px;height:25px;object-fit:cover;border-radius:7px}
+.hub:hover{background:#F7F1FF;border-color:#cdb8f5;transform:translateY(-1px)}
+.hub-icon{display:block;width:25px;height:25px;max-width:25px;max-height:25px;flex:0 0 25px;object-fit:contain;border-radius:7px}
 main{width:min(1160px,calc(100% - 36px));margin:auto;padding:54px 0 76px}
 .welcome{
   position:relative;text-align:center;max-width:760px;margin:8px auto 42px;
