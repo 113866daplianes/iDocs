@@ -28,11 +28,21 @@ button,input{font:inherit}button{cursor:pointer}
   backdrop-filter:blur(18px)
 }
 .brand{display:flex;align-items:center;gap:14px}
-.mark{
-  width:52px;height:52px;border-radius:17px;
-  background:linear-gradient(145deg,#8C4CF1 0%,#6429D1 55%,#4E1FAE 100%);
-  display:grid;place-items:center;color:white;font-weight:900;font-size:20px;
-  box-shadow:0 10px 24px rgba(105,49,211,.28),inset 0 1px 0 rgba(255,255,255,.28)
+.brand-icon{
+  display:block;
+  width:58px;
+  height:58px;
+  flex:0 0 58px;
+  object-fit:contain;
+  border-radius:16px;
+  box-shadow:0 8px 22px rgba(105,49,211,.16);
+}
+.lang-icon{
+  width:76px;
+  height:76px;
+  flex-basis:76px;
+  margin:0 auto 20px;
+  border-radius:20px;
 }
 .brandname{font-size:21px;font-weight:850;letter-spacing:-.7px}
 .sub{font-size:12px;color:var(--muted);margin-top:4px;letter-spacing:.1px}
@@ -164,7 +174,7 @@ footer{text-align:center;padding:25px 16px 34px;color:#928da0;font-size:11px}
 }
 .langcard:before{content:"";position:absolute;left:0;right:0;top:0;height:6px;background:linear-gradient(90deg,#7537DF,#B18AFB)}
 
-.langcard h2{margin:0 0 9px;font-size:23px;letter-spacing:-.5px}
+.langcard > .lang-icon{display:block;width:76px;height:76px;object-fit:contain;margin:0 auto 20px;flex:none}\n.langcard h2{margin:0 0 9px;font-size:23px;letter-spacing:-.5px}
 .langcard p{color:var(--muted);font-size:13px;line-height:1.55;margin:0 0 24px}
 .langs{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 .langs button{
@@ -177,7 +187,7 @@ footer{text-align:center;padding:25px 16px 34px;color:#928da0;font-size:11px}
 .hidden{display:none!important}
 @media(max-width:650px){
   .topbar{min-height:70px;padding:11px 16px}.brandname{font-size:17px}.sub{font-size:10px}
-  .brand-icon{width:46px;height:46px;border-radius:13px}.hub{font-size:10px;padding:9px 10px}.hub-icon{width:21px;height:21px}
+  .brand > .brand-icon{width:46px;height:46px;flex-basis:46px;border-radius:13px}.hub{font-size:10px;padding:9px 10px}.hub-icon{width:21px;height:21px}
   main{padding-top:32px}.welcome{padding:15px 5px 8px;margin-bottom:25px}
   h1{letter-spacing:-1.2px}.grid,.choices,.fields{grid-template-columns:1fr}
   .menu{min-height:175px;padding:23px}.panel{border-radius:20px;padding:23px 18px}
