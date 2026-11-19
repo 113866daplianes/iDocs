@@ -1745,5 +1745,21 @@ if (transactionTool) {
 }
 
 applyLang();
+
+// Keep all text entries in public data-collection forms uppercase.
+document.addEventListener('input', function (event) {
+  const field = event.target;
+  if (!field.matches('#appearanceForm input[type="text"], #documentRequestForm input[type="text"], #appearanceForm textarea, #documentRequestForm textarea')) return;
+  const start = field.selectionStart;
+  const end = field.selectionEnd;
+  const upper = field.value.toLocaleUpperCase('en-US');
+  if (field.value !== upper) {
+    field.value = upper;
+    if (typeof start === 'number' && typeof end === 'number') {
+      field.setSelectionRange(start, end);
+    }
+  }
+});
+
 </script>
 </body></html>
