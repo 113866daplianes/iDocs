@@ -1,0 +1,31 @@
+{
+  "id": "./",
+  "name": "DES iDocs \u2014 School Document Request & Generation Portal",
+  "short_name": "DES iDocs",
+  "description": "Daplian Elementary School document request and generation portal.",
+  "lang": "en",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#F2EAFB",
+  "theme_color": "#54218F",
+  "categories": [
+    "education",
+    "productivity"
+  ],
+  "icons": [
+    {
+      "src": "./iDocs-icon.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "./iDocs-icon.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}

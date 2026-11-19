@@ -497,10 +497,221 @@ form .status{margin-top:16px}
 @media(max-width:760px){.history-toolbar{grid-template-columns:1fr 1fr}.history-control.search-control{grid-column:1/-1}.history-actions{grid-column:1/-1}.history-actions button{flex:1}}
 @media(max-width:520px){.history-toolbar{grid-template-columns:1fr}.history-control.search-control,.history-actions{grid-column:auto}.history-detail-grid{grid-template-columns:1fr}.history-detail-item.full{grid-column:auto}.history-popup-options{grid-template-columns:1fr}.history-meta{align-items:flex-start;flex-direction:column}}
 
+
+/* ===== DES iDocs Aero UI refresh: violet glass, clarity and touch-first layout ===== */
+:root{
+  --p:#7134D6; --pd:#421477; --pl:#B58AFF; --soft:#F0E5FF;
+  --ink:#241438; --muted:#665878; --line:rgba(105,65,155,.20);
+  --page:#F2EAFB; --shadow:0 22px 60px rgba(47,18,82,.16);
+}
+html{min-height:100%;background:#F1E8FB}
+body{
+  color:var(--ink);
+  background:
+    radial-gradient(ellipse at 8% 8%,rgba(192,153,255,.42),transparent 34rem),
+    radial-gradient(ellipse at 92% 22%,rgba(125,66,207,.23),transparent 32rem),
+    linear-gradient(145deg,#F7F1FF 0%,#EDE2FA 48%,#F8F4FF 100%);
+  background-attachment:fixed;
+}
+.topbar{
+  min-height:132px;
+  background:
+    radial-gradient(ellipse at 82% 0%,rgba(213,178,255,.32),transparent 27rem),
+    linear-gradient(115deg,rgba(48,12,88,.97),rgba(91,31,153,.96) 52%,rgba(112,47,190,.94));
+  border-bottom:1px solid rgba(255,255,255,.32);
+  box-shadow:0 12px 34px rgba(46,15,81,.25),inset 0 1px 0 rgba(255,255,255,.2);
+  backdrop-filter:blur(22px) saturate(150%);
+}
+.brand-icon{
+  border:1px solid rgba(255,255,255,.8);
+  box-shadow:0 8px 28px rgba(20,4,42,.32),inset 0 1px 0 #fff;
+}
+.hub{
+  color:#421477;background:linear-gradient(180deg,#fff,#F1E7FF);
+  border:1px solid rgba(255,255,255,.9);
+  box-shadow:0 8px 24px rgba(22,4,47,.24),inset 0 1px 0 #fff;
+}
+main{padding-top:clamp(28px,5vw,54px)}
+.welcome{max-width:1120px}
+.eyebrow{
+  color:#4D198C;background:rgba(255,255,255,.72);
+  border:1px solid rgba(123,75,181,.24);
+  box-shadow:0 5px 18px rgba(68,30,111,.08),inset 0 1px 0 #fff;
+  backdrop-filter:blur(12px);
+}
+h1{color:#451477}
+.welcome p{color:#574768}
+.menu,.panel,.choice,.review-card,.print-step,.history-table-card,.recent-card,
+.summary-card,.stat-card,.admin-tool-card,.history-edit-card{
+  backdrop-filter:blur(18px) saturate(135%);
+}
+.menu{
+  background:linear-gradient(135deg,rgba(255,255,255,.92),rgba(245,235,255,.83));
+  border:1px solid rgba(255,255,255,.92);
+  box-shadow:0 13px 34px rgba(54,20,91,.10),inset 0 1px 0 rgba(255,255,255,.95);
+}
+.menu:hover{box-shadow:0 20px 44px rgba(54,20,91,.18);border-color:#C5A6EF}
+.mi{
+  background:linear-gradient(145deg,#F8F0FF,#D5B8FF 70%,#BE96F4);
+  border:1px solid rgba(255,255,255,.9);
+  box-shadow:0 9px 22px rgba(81,35,132,.18),inset 0 2px 3px rgba(255,255,255,.95);
+}
+.menu h2{color:#32134F}
+.menu p{color:#665577}
+.panel{
+  background:linear-gradient(135deg,rgba(255,255,255,.96),rgba(250,245,255,.91));
+  border:1px solid rgba(255,255,255,.96);
+  box-shadow:0 22px 58px rgba(54,22,91,.15),inset 0 1px 0 #fff;
+}
+.panel:before{background:linear-gradient(90deg,#431078,#7134D6 48%,#D0B3FF)}
+.head h2,.selection-dialog h3,.history-popup-card h3{color:#431477}
+.head p,.choice small,.field-hint{color:#5F506E}
+label,.history-control label{color:#463353}
+input,.history-search,.history-remarks{
+  color:#241438;background:rgba(255,255,255,.96);
+  border:1px solid #CDBBE2;box-shadow:inset 0 1px 2px rgba(50,20,80,.035);
+}
+input::placeholder,.history-search::placeholder,.history-remarks::placeholder{color:#786A87;opacity:1}
+input:focus,.history-search:focus,.history-remarks:focus{
+  border-color:#7134D6;box-shadow:0 0 0 4px rgba(113,52,214,.15);
+}
+.choice,.picker-trigger,.selection-option,.history-popup-options button{
+  color:#321747;background:linear-gradient(135deg,rgba(255,255,255,.98),rgba(247,239,255,.94));
+  border-color:#D6C4EA;
+}
+.choice:hover,.picker-trigger:hover,.selection-option:hover,.history-popup-options button:hover{
+  background:linear-gradient(135deg,#fff,#EFE1FF);border-color:#A77BD8;
+}
+.choice strong{color:#321747}
+.choice small{color:#655574}
+.service-icon{
+  background:linear-gradient(145deg,#F7EDFF,#D9BEFF);
+  border-color:#E4D2F7;box-shadow:inset 0 2px 3px #fff,0 7px 18px rgba(71,29,119,.12);
+}
+.primary{
+  color:#fff;background:linear-gradient(115deg,#7A3CE0,#4B168F);
+  border:1px solid rgba(255,255,255,.22);
+  box-shadow:0 8px 20px rgba(75,22,143,.26),inset 0 1px 0 rgba(255,255,255,.24);
+}
+.primary:hover:not(:disabled){filter:brightness(1.08)}
+.back,.secondary,.history-open{
+  color:#4B197F;background:linear-gradient(180deg,#fff,#F4EBFF);
+  border:1px solid #D7C4EB;box-shadow:inset 0 1px 0 #fff;
+}
+.notice{
+  color:#45266B;background:linear-gradient(110deg,rgba(239,225,255,.96),rgba(250,245,255,.96));
+  border:1px solid #DCC8F3;
+}
+.api{color:#554467;background:rgba(255,255,255,.82);border-color:#D8C7EA}
+footer{color:#655574}
+.stat-card,.summary-card,.recent-card,.admin-tool-card,.history-edit-card{
+  background:linear-gradient(140deg,rgba(255,255,255,.97),rgba(248,241,255,.94));
+  border-color:#E0D1F0;
+}
+.stat-value,.summary-number{color:#401477}
+.stat-label,.summary-heading small,.recent-heading p,.recent-foot{color:#655574}
+.recent-table th,.history-table th{color:#4E3A62;background:#F0E7FA}
+.recent-table td,.history-table td{color:#463653}
+.review-item,.history-detail-item{background:#F5EEFC;border-color:#E1D3F0}
+.review-item small,.history-detail-item small{color:#665574}
+.review-item strong,.history-detail-item strong{color:#321747}
+.selection-dialog,.history-popup-card,.reminder-card{
+  background:linear-gradient(145deg,rgba(255,255,255,.99),rgba(247,239,255,.98));
+  border-color:#DCC9F0;box-shadow:0 28px 90px rgba(27,7,48,.36);
+}
+.selection-dialog p,.history-popup-card p{color:#5F506E}
+.status{color:#655574}
+.status.ok{color:#126B3C}.status.error{color:#A51F32}
+#hubLink.hidden{display:none!important}
+button,a,input{ -webkit-tap-highlight-color:transparent }
+button:focus-visible,a:focus-visible{
+  outline:3px solid #B68BFA;outline-offset:3px;
+}
+@media(max-width:900px){
+  .topbar{min-height:112px;padding:14px 22px}
+  main{width:min(100% - 32px,820px)}
+  .grid{gap:17px}
+  .menu{padding-left:106px}
+  .mi{left:22px;width:66px;height:66px}
+  .panel{padding:clamp(20px,4vw,32px)}
+}
+@media(max-width:760px){
+  .topbar{min-height:92px;padding:12px 15px;gap:10px}
+  .brand{gap:11px;min-width:0}
+  .brand-icon{width:58px;height:58px;max-width:58px;flex-basis:58px}
+  .school-kicker{font-size:8px;letter-spacing:1px}
+  .brandname{font-size:30px}
+  .sub{font-size:10px;max-width:190px;line-height:1.35}
+  .hub{padding:8px 10px;font-size:11px;gap:6px}
+  .hub-icon{width:24px!important;height:24px!important;max-width:24px!important;max-height:24px!important;flex-basis:24px!important}
+  main{width:calc(100% - 26px);padding:25px 0 42px}
+  .welcome{margin-bottom:20px}
+  .welcome p{font-size:14px;line-height:1.6}
+  .grid{grid-template-columns:1fr;gap:13px;margin-top:20px}
+  .menu{min-height:150px;padding:20px 18px 18px 94px;border-radius:19px}
+  .mi{left:17px;width:60px;height:60px;font-size:31px}
+  .menu h2{font-size:19px;margin:12px 0 6px}
+  .menu p{font-size:13px}
+  .panel{padding:22px 17px;border-radius:20px}
+  .head{gap:10px;flex-wrap:wrap}
+  .head h2{font-size:23px}
+  .head p{font-size:13px}
+  .back{padding:10px 12px}
+  .choices{grid-template-columns:1fr}
+  .choice{min-height:76px;padding:14px}
+  .service-icon{width:54px;height:54px;min-width:54px;font-size:28px}
+  .document-choice .service-icon{width:48px;height:48px;min-width:48px}
+  .fields{grid-template-columns:1fr;gap:14px}
+  .field.full{grid-column:auto}
+  input,.picker-trigger,.history-search{min-height:48px;font-size:16px}
+  .actions,.workflow-actions{flex-direction:column}
+  .actions button,.workflow-actions button,.primary,.secondary{min-height:46px}
+  .review-grid,.history-detail-grid{grid-template-columns:1fr}
+  .review-item.full,.history-detail-item.full{grid-column:auto}
+  .history-toolbar{grid-template-columns:1fr}
+  .history-control.search-control,.history-actions{grid-column:auto}
+  .history-actions button{flex:1}
+  .stats-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .dashboard-split,.admin-tools-grid{grid-template-columns:1fr}
+  .recent-heading{padding:15px;align-items:flex-start}
+  .recent-heading h3{font-size:16px}
+  .recent-table{min-width:560px}
+  .history-table{min-width:680px}
+  .selection-dialog{max-height:calc(100dvh - 28px);padding:21px 16px}
+  .selection-options,.history-popup-options{grid-template-columns:1fr}
+  .selection-option{min-height:50px}
+  .reminder-card{padding:25px 18px}
+  .workflow-actions .primary,.workflow-actions .secondary{width:100%}
+}
+@media(max-width:420px){
+  .brand-icon{width:50px;height:50px;max-width:50px;flex-basis:50px}
+  .brandname{font-size:26px}
+  .school-kicker{font-size:7px;letter-spacing:.8px}
+  .sub{font-size:9px;max-width:160px}
+  .hub{padding:7px 8px;font-size:10px}
+  .hub-icon{display:none!important}
+  main{width:calc(100% - 20px)}
+  .menu{padding-left:83px}
+  .mi{left:13px;width:55px;height:55px}
+  .stat-card{min-height:112px;padding:12px}
+  .stat-value{font-size:26px}
+}
+@media(display-mode:standalone){
+  .topbar{padding-top:max(12px,env(safe-area-inset-top))}
+  body{padding-bottom:env(safe-area-inset-bottom)}
+}
+
 </style>
   <link rel="icon" type="image/png" sizes="512x512" href="./iDocs-icon.png">
   <link rel="apple-touch-icon" href="./iDocs-icon.png">
   <meta name="theme-color" content="#7537DF">
+
+<link rel="manifest" href="./manifest.webmanifest">
+<meta name="application-name" content="DES iDocs">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="DES iDocs">
+<meta name="mobile-web-app-capable" content="yes">
 </head>
 <body>
 <header class="topbar">
@@ -602,7 +813,7 @@ form .status{margin-top:16px}
     <p style="color:#756482;line-height:1.7">Your document request and printing process are complete. Please hand the Request Slip together with the Generated Document to the Administrative Officer/Office Personnel for Verification and Signature.</p>
     <p style="color:#5E526B;line-height:1.7;margin:16px auto 8px;max-width:650px"><strong>Please fill out our Client Satisfaction Measurement System (CSM) as we process your paper.</strong></p>
     <p class="status" id="redirectStatus">When you are ready, proceed to the Client Satisfaction Measurement System.</p>
-    <a class="primary" id="proceedCsmButton" href="https://www.appsheet.com/start/8694ddba-af4c-4c54-ac17-3bbab4b41e8a?platform=desktop" target="_blank" rel="noopener noreferrer" style="display:inline-block;text-decoration:none;margin-top:12px">Proceed to iCSM ↗</a>
+    <a class="primary" id="proceedCsmButton" href="https://113866daplianes.github.io/iCSM" target="_blank" rel="noopener noreferrer" style="display:inline-block;text-decoration:none;margin-top:12px">Proceed to iCSM ↗</a>
   </div>
 </section>
 
@@ -730,18 +941,19 @@ form .status{margin-top:16px}
 <div class="api"><span class="dot" id="apiDot"></span><span id="apiLabel">API connection not yet tested</span></div>
 </main><footer>DES iDocs <span aria-hidden="true">✦</span> Making school services simpler · Daplian Elementary School</footer>
 <div class="selection-overlay" id="selectionModal" aria-hidden="true"><div class="selection-dialog" role="dialog" aria-modal="true" aria-labelledby="selectionTitle" aria-describedby="selectionDescription"><div class="selection-dialog-head"><h3 id="selectionTitle">Choose an option</h3><button type="button" class="selection-close" id="selectionClose" aria-label="Close selection">×</button></div><p id="selectionDescription">Select one option below.</p><div class="selection-options" id="selectionOptions"></div></div></div>
-<div class="overlay" id="languageOverlay"><div class="langcard" role="dialog" aria-modal="true" aria-labelledby="langHeading"><img class="brand-icon lang-icon" src="./iDocs-icon.png" alt="DES iDocs logo"><h2 id="langHeading">Please choose your language.</h2><p>Pumili san lenggwahe.</p><div class="langs"><button class="selected" data-lang="en">English</button><button data-lang="min">Minasbate</button></div><button class="primary continue" id="continue">Continue</button></div></div>
+
 <script src="https://cdn.jsdelivr.net/npm/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
 <script>
 const API_URL='https://script.google.com/macros/s/AKfycbzlO9BLGTiydq8Gr62kJ2_PVkZpj89bt2V4av7kNoUOTeF-TcpWXRIjtvRSZUReSFW4/exec';
-const T={
-en:{welcomeTitle:'Documents made simpler.',welcomeText:'Request school documents and certificates through the DES iDocs online service.',requestTitle:'Request Documents',requestDesc:'Request school records, certifications, and certificates of appearance.',requestArrow:'Explore services →',adminTitle:'Administrator',adminDesc:'Access transaction management and document generation tools.',adminArrow:'Administrator access →',requestPanelTitle:'Request Documents',requestPanelDesc:'Choose the service you need.',backText:'Back',schoolDocsTitle:'School Documents',schoolDocsDesc:'Certificates and school records',appearanceTitle:'Certificate of Appearance',appearanceDesc:'Request an appearance certificate',requestNotice:'Select a service to continue. Document requirements will be displayed before you submit a request.',documentsPanelTitle:'School Documents',documentsPanelDesc:'Select the document you wish to request.',adminPanelTitle:'Administrator Access',adminPanelDesc:'Enter your six-digit administrator PIN.',continue:'Continue'},
-min:{welcomeTitle:'Mas simple an pag-request nin dokumento.',welcomeText:'Mag-request nin dokumento asin sertipikasyon paagi sa DES iDocs.',requestTitle:'Mag-request nin Dokumento',requestDesc:'Mag-request nin school records asin sertipikasyon.',requestArrow:'Tan-awon an serbisyo →',adminTitle:'Administrador',adminDesc:'Buksan an pagdumara nin transaksyon asin dokumento.',adminArrow:'Pag-access nin administrador →',requestPanelTitle:'Mag-request nin Dokumento',requestPanelDesc:'Pilia an serbisyong kailangan mo.',backText:'Balik',schoolDocsTitle:'Mga Dokumento sa Eskwelahan',schoolDocsDesc:'Mga sertipiko asin school records',appearanceTitle:'Sertipiko nin Pag-appear',appearanceDesc:'Mag-request nin sertipiko nin pag-appear',requestNotice:'Pilia an serbisyo para magpadayon.',documentsPanelTitle:'Mga Dokumento sa Eskwelahan',documentsPanelDesc:'Pilia an dokumentong i-request mo.',adminPanelTitle:'Access nin Administrador',adminPanelDesc:'Ibutang an imo anim na digit na PIN.',continue:'Magpadayon'}};
-let lang='en';
-function applyLang(){Object.entries(T[lang]).forEach(([k,v])=>{let e=document.getElementById(k);if(e)e.textContent=v});document.getElementById('continue').textContent=T[lang].continue;document.documentElement.lang=lang==='en'?'en':'bik'}
-document.querySelectorAll('[data-lang]').forEach(b=>b.onclick=()=>{lang=b.dataset.lang;document.querySelectorAll('[data-lang]').forEach(x=>x.classList.toggle('selected',x===b));applyLang()});
+document.documentElement.lang = 'en';
 document.getElementById('continue').onclick=()=>document.getElementById('languageOverlay').classList.add('hidden');
-function show(id){document.getElementById('home').style.display=id==='home'?'':'none';document.querySelectorAll('.panel').forEach(p=>p.classList.toggle('active',p.id===id));window.scrollTo({top:0,behavior:'smooth'})}
+function show(id){
+  document.getElementById('home').style.display = id === 'home' ? '' : 'none';
+  document.querySelectorAll('.panel').forEach(panel => panel.classList.toggle('active', panel.id === id));
+  const hubLink = document.getElementById('hubLink');
+  if (hubLink) hubLink.classList.toggle('hidden', id !== 'home');
+  window.scrollTo({top:0, behavior:'smooth'});
+}
 document.getElementById('requestMenu').onclick=()=>show('requestPanel');document.getElementById('adminMenu').onclick=()=>show('adminPanel');
 document.querySelectorAll('[data-home]').forEach(b=>b.onclick=()=>show('home'));document.querySelectorAll('[data-request]').forEach(b=>b.onclick=()=>show('requestPanel'));document.querySelectorAll('[data-docs]').forEach(b=>b.onclick=()=>show('documentsPanel'));
 document.getElementById('schoolDocs').onclick=()=>{show('documentsPanel');loadTypes()};document.getElementById('appearance').onclick=()=>show('appearancePanel');
@@ -1744,7 +1956,7 @@ if (transactionTool) {
   });
 }
 
-applyLang();
+document.documentElement.lang = 'en';
 
 // Keep all text entries uppercase while typing and again when collecting submitted values.
 document.addEventListener('input', function (event) {
@@ -1760,6 +1972,16 @@ document.addEventListener('input', function (event) {
     }
   }
 });
+
+
+// Register the DES iDocs Progressive Web App service worker.
+if ('serviceWorker' in navigator && (location.protocol === 'https:' || location.hostname === 'localhost')) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('./service-worker.js')
+      .then(registration => console.info('DES iDocs PWA ready:', registration.scope))
+      .catch(error => console.warn('DES iDocs PWA registration failed:', error));
+  });
+}
 
 </script>
 </body></html>
