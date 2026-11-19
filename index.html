@@ -2105,7 +2105,7 @@ document.addEventListener('input', function (event) {
 // Register the DES iDocs Progressive Web App service worker.
 if ('serviceWorker' in navigator && (location.protocol === 'https:' || location.hostname === 'localhost')) {
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('./service-worker.js')
+    navigator.serviceWorker.register('./service-worker.js', { scope: new URL('./', location.href).pathname })
       .then(registration => console.info('DES iDocs PWA ready:', registration.scope))
       .catch(error => console.warn('DES iDocs PWA registration failed:', error));
   });
