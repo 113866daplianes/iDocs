@@ -1,4 +1,4 @@
-const CACHE_NAME = 'des-idocs-aero-v4';
+const CACHE_NAME = 'des-idocs-purple-aero-v5';
 const APP_SHELL = [
   './',
   './index.html',
