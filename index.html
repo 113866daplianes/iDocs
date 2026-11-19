@@ -1018,7 +1018,7 @@ function setSubmitting(button, busy, label) {
   button.disabled = busy;
   button.textContent = busy ? 'Submitting…' : label;
 }
-function inputValue(id) { return document.getElementById(id).value.trim(); }
+function inputValue(id) { return document.getElementById(id).value.trim().toLocaleUpperCase('en-US'); }
 function clearDocumentFormAfterSuccess() {
   document.getElementById('documentRequestForm').reset();
   document.getElementById('sy').value = '2026-2027';
@@ -1746,10 +1746,10 @@ if (transactionTool) {
 
 applyLang();
 
-// Keep all text entries in public data-collection forms uppercase.
+// Keep all text entries uppercase while typing and again when collecting submitted values.
 document.addEventListener('input', function (event) {
   const field = event.target;
-  if (!field.matches('#appearanceForm input[type="text"], #documentRequestForm input[type="text"], #appearanceForm textarea, #documentRequestForm textarea')) return;
+  if (!field.matches('#appearanceForm input:not([type]), #appearanceForm input[type="text"], #documentRequestForm input:not([type]), #documentRequestForm input[type="text"], #appearanceForm textarea, #documentRequestForm textarea')) return;
   const start = field.selectionStart;
   const end = field.selectionEnd;
   const upper = field.value.toLocaleUpperCase('en-US');
