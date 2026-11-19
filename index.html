@@ -150,6 +150,7 @@ input{
   outline:none;background:#fff;color:var(--ink);transition:.18s
 }
 input::placeholder{color:#aaa4b5}
+.required-mark{color:#b42335}
 input:focus{border-color:var(--p);box-shadow:0 0 0 4px rgba(117,55,223,.11)}
 .primary{
   border:0;background:linear-gradient(110deg,#7537DF,#5B25BE);color:white;
@@ -389,6 +390,113 @@ footer{color:#897A98}
 @media(max-width:700px){.stats-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.dashboard-split{grid-template-columns:1fr}.admin-tools-grid{grid-template-columns:1fr}.dashboard-section-title{align-items:flex-start;flex-direction:column;gap:4px}.admin-head{align-items:center}}
 @media(max-width:420px){.stat-card{min-height:120px;padding:14px}.stat-value{font-size:27px}.summary-card{padding:14px}.recent-heading{padding:16px}}
 
+.field label span{color:#B42335}.field input:required{background-color:#FFFEFF}
+form .status{margin-top:16px}
+
+/* Form 9 / Form 10 selectable button group */
+.choice-buttons{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.choice-option{min-height:54px;padding:13px 16px;border:1px solid #DCCCF0;border-radius:13px;background:linear-gradient(135deg,#fff,#F8F2FF);color:#54218F;font-weight:800;font-size:14px;transition:background .18s,border-color .18s,box-shadow .18s,transform .18s}
+.choice-option:hover{border-color:#A77BDF;background:#F3E9FF;transform:translateY(-1px)}
+.choice-option.selected,.choice-option[aria-pressed="true"]{border:2px solid #7131D2;background:linear-gradient(135deg,#EEE2FF,#E2CEFF);color:#451276;box-shadow:0 0 0 3px rgba(113,49,210,.12)}
+.field-hint{font-size:11px;color:#887796}
+@media(max-width:480px){.choice-buttons{gap:8px}.choice-option{min-height:48px;padding:11px 8px;font-size:13px}}
+
+
+/* Custom popup selection controls — replaces native dropdowns */
+.picker-trigger{width:100%;min-height:50px;padding:13px 15px;border:1px solid #DCCCEF;border-radius:13px;background:linear-gradient(120deg,#fff,#FBF8FF);color:#5B347D;display:flex;align-items:center;justify-content:space-between;gap:12px;text-align:left;font:inherit;font-size:14px;font-weight:650;transition:.18s;box-shadow:0 3px 10px rgba(62,27,99,.035)}
+.picker-trigger:hover,.picker-trigger:focus-visible{border-color:#8D5BDB;box-shadow:0 0 0 4px rgba(117,55,223,.11);outline:none;background:#FBF7FF}
+.picker-trigger.is-selected{color:#321747;border-color:#B995E6}
+.picker-chevron{font-size:21px;color:#7131D2;line-height:1}
+.selection-overlay{position:fixed;inset:0;z-index:40;display:none;place-items:center;padding:18px;background:rgba(25,13,43,.62);backdrop-filter:blur(7px)}
+.selection-overlay.open{display:grid;animation:panelIn .18s ease both}
+.selection-dialog{width:min(520px,100%);max-height:min( min(720px, calc(100dvh - 36px)), 90vh);overflow:auto;position:relative;background:linear-gradient(145deg,#fff 0%,#FCF9FF 100%);border:1px solid #E5D7F5;border-radius:23px;padding:25px;box-shadow:0 28px 90px rgba(18,7,37,.32)}
+.selection-dialog:before{content:"";position:absolute;left:0;right:0;top:0;height:6px;background:linear-gradient(90deg,#451276,#7131D2 50%,#B98BFA)}
+.selection-dialog-head{display:flex;justify-content:space-between;align-items:flex-start;gap:14px;margin:5px 0 8px}
+.selection-dialog h3{margin:0;color:#4E1A83;font-size:23px;letter-spacing:-.5px}
+.selection-dialog p{margin:0 0 19px;color:#786987;font-size:13px;line-height:1.5}
+.selection-close{width:36px;height:36px;flex:none;border:1px solid #E5D9F2;border-radius:11px;background:#fff;color:#68458D;font-size:20px}
+.selection-options{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}
+.selection-option{min-height:62px;padding:14px;border:1px solid #E3D6F1;border-radius:14px;background:linear-gradient(120deg,#fff,#F9F4FF);color:#452268;text-align:left;font-size:14px;font-weight:750;display:flex;align-items:center;justify-content:space-between;gap:10px;transition:.18s}
+.selection-option:hover{border-color:#B995E6;background:#F3E9FF;transform:translateY(-1px)}
+.selection-option[aria-pressed="true"]{border:2px solid #7131D2;background:#EEE2FF;color:#42127D;box-shadow:0 0 0 3px rgba(113,49,210,.09)}
+.selection-option .option-check{opacity:0;color:#7131D2;font-weight:900}.selection-option[aria-pressed="true"] .option-check{opacity:1}
+@media(max-width:520px){.selection-dialog{padding:22px 17px;border-radius:19px}.selection-options{grid-template-columns:1fr}.selection-option{min-height:55px}}
+
+
+/* ===== Review, confirmation and public printing workflow ===== */
+.review-card{border:1px solid #E5D9F2;border-radius:17px;background:#fff;padding:19px;margin:16px 0}
+.review-card h3{margin:0 0 14px;color:#4E1A83;font-size:16px}
+.review-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.review-item{padding:11px 13px;border-radius:11px;background:#FAF7FE;min-width:0}
+.review-item.full{grid-column:1/-1}
+.review-item small{display:block;color:#867694;font-size:10px;font-weight:850;letter-spacing:.8px;text-transform:uppercase;margin-bottom:5px}
+.review-item strong{display:block;color:#38204F;font-size:13px;line-height:1.5;overflow-wrap:anywhere}
+.workflow-actions{display:flex;flex-wrap:wrap;gap:11px;margin-top:22px}
+.print-step{border:1px solid #E4D8F1;border-radius:17px;background:#fff;padding:19px;margin:15px 0}
+.print-step h3{margin:0 0 8px;color:#4E1A83;font-size:17px}
+.print-step p{color:#756482;font-size:13px;line-height:1.65;margin:0 0 14px}
+.copy-options{display:flex;gap:10px;flex-wrap:wrap;margin:13px 0}
+.copy-option{min-width:76px;padding:12px 18px;border:1px solid #DCCCF0;border-radius:12px;background:#fff;color:#54218F;font-weight:850}
+.copy-option.selected{border:2px solid #7131D2;background:#EEE2FF;color:#451276}
+.print-reminder{position:fixed;inset:0;z-index:80;display:none;place-items:center;padding:20px;background:rgba(25,13,43,.72);backdrop-filter:blur(8px)}
+.print-reminder.open{display:grid}
+.reminder-card{width:min(540px,100%);padding:30px;background:#fff;border-radius:23px;border:1px solid #E5D7F5;box-shadow:0 28px 90px rgba(18,7,37,.35);text-align:center;position:relative;overflow:hidden}
+.reminder-card:before{content:"";position:absolute;left:0;right:0;top:0;height:6px;background:linear-gradient(90deg,#451276,#7131D2,#B98BFA)}
+.reminder-card h2{margin:5px 0 14px;color:#4E1A83;font-size:24px}
+.reminder-card p{font-size:14px;line-height:1.75;color:#5E526B;margin:0 0 20px}
+.countdown-ring{--progress:0deg;width:94px;height:94px;border-radius:50%;margin:18px auto;display:grid;place-items:center;background:conic-gradient(#7131D2 var(--progress),#EDE5F6 0);position:relative}
+.countdown-ring:before{content:"";position:absolute;inset:8px;border-radius:50%;background:#fff}
+.countdown-ring strong{position:relative;font-size:30px;color:#54218F}
+.countdown-actions{display:flex;justify-content:center;gap:10px;flex-wrap:wrap}
+.thankyou-mark{width:76px;height:76px;border-radius:50%;display:grid;place-items:center;margin:0 auto 18px;background:#E8F7EE;color:#21864C;font-size:38px}
+@media(max-width:600px){.review-grid{grid-template-columns:1fr}.review-item.full{grid-column:auto}.reminder-card{padding:26px 20px}.workflow-actions .primary,.workflow-actions .secondary{width:100%}}
+
+
+/* ===== Stage 3: Transaction History and Request Management ===== */
+.history-toolbar{display:grid;grid-template-columns:minmax(220px,1.6fr) repeat(2,minmax(150px,.8fr)) auto;gap:11px;align-items:end;margin:18px 0}
+.history-control{display:flex;flex-direction:column;gap:7px;min-width:0}
+.history-control label{font-size:11px;font-weight:850;color:#655078}
+.history-search{width:100%;min-height:49px;padding:12px 14px;border:1px solid #DCCCEF;border-radius:13px;background:#fff;color:var(--ink);outline:none}
+.history-search:focus,.history-remarks:focus{border-color:var(--p);box-shadow:0 0 0 4px rgba(117,55,223,.11)}
+.history-filter{min-height:49px}
+.history-actions{display:flex;gap:8px}
+.history-actions button{min-height:47px}
+.history-meta{display:flex;justify-content:space-between;align-items:center;gap:12px;margin:14px 0;color:#7C6B8C;font-size:12px}
+.history-table-card{border:1px solid #E4D8F1;border-radius:17px;background:#fff;overflow:hidden}
+.history-table{width:100%;border-collapse:collapse;min-width:720px}
+.history-table th{text-align:left;background:#F7F2FC;color:#79688A;font-size:10px;letter-spacing:.9px;padding:13px 14px}
+.history-table td{padding:14px;border-top:1px solid #F0EAF5;font-size:12px;color:#4C3C5B;vertical-align:middle}
+.history-table td:first-child{font-weight:800;color:#39204F}
+.history-open{border:1px solid #DCCCF0;background:#fff;color:#54218F;border-radius:10px;padding:8px 11px;font-size:11px;font-weight:800}
+.history-open:hover{background:#F1E6FF;border-color:#B995E6}
+.history-pagination{display:flex;justify-content:center;align-items:center;gap:12px;margin-top:17px}
+.history-pagination button{min-width:90px}
+.history-pagination button:disabled{opacity:.45;cursor:not-allowed}
+.history-detail-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:18px 0}
+.history-detail-item{padding:13px;border:1px solid #E9DFF3;border-radius:12px;background:#FBF8FE;min-width:0}
+.history-detail-item.full{grid-column:1/-1}
+.history-detail-item small{display:block;font-size:10px;letter-spacing:.7px;text-transform:uppercase;font-weight:850;color:#897795;margin-bottom:6px}
+.history-detail-item strong{display:block;font-size:13px;color:#3F2852;line-height:1.5;overflow-wrap:anywhere;white-space:pre-wrap}
+.history-edit-card{margin-top:20px;padding:19px;border:1px solid #E3D6F1;border-radius:16px;background:#fff}
+.history-edit-card h3{margin:0 0 14px;color:#4E1A83;font-size:16px}
+.history-edit-fields{display:grid;grid-template-columns:1fr;gap:13px}
+.history-remarks{width:100%;min-height:100px;resize:vertical;padding:13px 14px;border:1px solid #DCCCEF;border-radius:13px;font:inherit;font-size:13px;color:var(--ink);outline:none}
+.history-detail-list{margin-top:18px}
+.history-detail-list h3{font-size:15px;color:#4E1A83;margin:0 0 10px}
+.history-detail-list .history-detail-item{margin-bottom:9px}
+.history-popup{position:fixed;inset:0;z-index:55;display:none;place-items:center;padding:18px;background:rgba(25,13,43,.62);backdrop-filter:blur(7px)}
+.history-popup.open{display:grid}
+.history-popup-card{width:min(500px,100%);max-height:85vh;overflow:auto;position:relative;padding:25px;background:#fff;border:1px solid #E5D7F5;border-radius:22px;box-shadow:0 28px 90px rgba(18,7,37,.32)}
+.history-popup-card h3{margin:4px 0 7px;color:#4E1A83;font-size:21px}
+.history-popup-card p{margin:0 0 16px;color:#786987;font-size:12px}
+.history-popup-options{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+.history-popup-options button{min-height:52px;padding:12px;border:1px solid #E3D6F1;border-radius:12px;background:#FBF8FE;color:#452268;text-align:left;font-size:13px;font-weight:750}
+.history-popup-options button[aria-pressed="true"]{border:2px solid #7131D2;background:#EEE2FF}
+.history-empty{padding:28px!important;text-align:center!important;color:#887A93!important}
+.history-loading{opacity:.65;pointer-events:none}
+@media(max-width:760px){.history-toolbar{grid-template-columns:1fr 1fr}.history-control.search-control{grid-column:1/-1}.history-actions{grid-column:1/-1}.history-actions button{flex:1}}
+@media(max-width:520px){.history-toolbar{grid-template-columns:1fr}.history-control.search-control,.history-actions{grid-column:auto}.history-detail-grid{grid-template-columns:1fr}.history-detail-item.full{grid-column:auto}.history-popup-options{grid-template-columns:1fr}.history-meta{align-items:flex-start;flex-direction:column}}
+
 </style>
   <link rel="icon" type="image/png" sizes="512x512" href="./iDocs-icon.png">
   <link rel="apple-touch-icon" href="./iDocs-icon.png">
@@ -404,7 +512,7 @@ footer{color:#897A98}
       <div class="sub">School Document Request &amp; Generation Portal</div>
     </div>
   </div>
-  <a class="hub" href="#" id="hubLink"><img src="./iApps-icon.png" alt="" class="hub-icon"><span>Go to iApps Dashboard</span><span aria-hidden="true">↗</span></a>
+  <a class="hub" href="https://www.appsheet.com/start/8694ddba-af4c-4c54-ac17-3bbab4b41e8a?platform=desktop" id="hubLink" target="_blank" rel="noopener noreferrer"><span aria-hidden="true">📝</span><span>Open iCSM</span><span aria-hidden="true">↗</span></a>
 </header>
 <main>
 <section class="welcome" id="home"><div class="eyebrow">Daplian Elementary School · Digital Services</div><h1 id="welcomeTitle">Documents made simpler.</h1><p id="welcomeText">Request school documents and certificates through the DES iDocs online service.</p>
@@ -415,8 +523,102 @@ footer{color:#897A98}
 <section class="panel" id="requestPanel"><div class="head"><div><h2 id="requestPanelTitle">Request Documents</h2><p id="requestPanelDesc">Choose the service you need.</p></div><button class="back" data-home>← <span id="backText">Back</span></button></div>
 <div class="choices"><button class="choice service-choice" id="schoolDocs"><span class="service-icon" aria-hidden="true">📚</span><span class="choice-copy"><strong id="schoolDocsTitle">School Documents</strong><small id="schoolDocsDesc">Certificates and school records</small></span><span class="chev">›</span></button><button class="choice service-choice" id="appearance"><span class="service-icon" aria-hidden="true">🧾</span><span class="choice-copy"><strong id="appearanceTitle">Certificate of Appearance</strong><small id="appearanceDesc">Request an appearance certificate</small></span><span class="chev">›</span></button></div><div class="notice" id="requestNotice">Select a service to continue. Document requirements will be displayed before you submit a request.</div></section>
 <section class="panel" id="documentsPanel"><div class="head"><div><h2 id="documentsPanelTitle">School Documents</h2><p id="documentsPanelDesc">Select the document you wish to request.</p></div><button class="back" data-request>← Back</button></div><div id="documentTypes" class="choices"></div><div class="status" id="documentStatus">Document types will load from the backend.</div></section>
-<section class="panel" id="appearancePanel"><div class="head"><div><h2>Certificate of Appearance</h2><p>Request a certificate for your school or office transaction.</p></div><button class="back" data-request>← Back</button></div><div class="fields"><div class="field full"><label for="appName">Full name</label><input id="appName" placeholder="Enter your full name"></div><div class="field"><label for="appDate">Date of appearance</label><input id="appDate" type="date"></div><div class="field"><label for="appPurpose">Purpose</label><input id="appPurpose" placeholder="Reason for appearance"></div></div><div class="notice">Prototype only. Submission will be enabled after the API connection and request workflow are verified.</div><div class="actions"><button class="primary" disabled>Submit request</button></div></section>
-<section class="panel" id="docForm"><div class="head"><div><h2 id="selectedDoc">Document Request</h2><p id="selectedDesc">Complete the required information.</p></div><button class="back" data-docs>← Back</button></div><div class="fields"><div class="field full"><label for="studentName">Student name</label><input id="studentName" placeholder="Enter student name"></div><div class="field"><label for="lrn">Learner Reference Number (LRN)</label><input id="lrn" placeholder="Optional"></div><div class="field"><label for="grade">Grade level</label><input id="grade" placeholder="e.g. Grade 6"></div><div class="field"><label for="sy">School year</label><input id="sy" placeholder="e.g. 2026–2027"></div><div class="field"><label for="purpose">Purpose</label><input id="purpose" placeholder="Purpose of request"></div></div><div class="notice">Prototype form only. No personal information is sent or stored.</div></section>
+<section class="panel" id="appearancePanel">
+  <div class="head"><div><h2>Certificate of Appearance</h2><p>Request a certificate for your school or office transaction.</p></div><button class="back" data-request>← Back</button></div>
+  <form id="appearanceForm" novalidate>
+    <div class="fields">
+      <div class="field full"><label for="appName">Full name *</label><input id="appName" maxlength="150" autocomplete="name" placeholder="Enter your full name" required></div>
+      <div class="field"><label for="appDate">Date of appearance *</label><input id="appDate" type="date" required></div>
+      <div class="field"><label for="appPurpose">Purpose *</label><input id="appPurpose" maxlength="500" placeholder="Reason for appearance" required></div>
+    </div>
+    <div class="notice">Please check your details before submitting. Your request will be recorded as Pending.</div>
+    <div class="actions"><button class="primary" id="appearanceSubmit" type="submit">Submit request</button></div>
+    <div class="status" id="appearanceStatus" role="status" aria-live="polite"></div>
+  </form>
+</section>
+<section class="panel" id="docForm">
+  <div class="head"><div><h2 id="selectedDoc">Document Request</h2><p id="selectedDesc">Complete the required information.</p></div><button class="back" data-docs>← Back</button></div>
+  <form id="documentRequestForm" novalidate>
+    <div class="fields">
+      <div class="field full"><label for="requesterName">Requester's Full Name <span class="required-mark">*</span></label><input id="requesterName" maxlength="150" autocomplete="name" placeholder="Name of the person making this request" required></div>
+      <div class="field full"><label for="clientContact">Contact Number</label><input id="clientContact" maxlength="100" autocomplete="tel" placeholder="Optional contact number"></div>
+      <div class="field full"><label for="studentName">Name of Learner <span class="required-mark">*</span></label><input id="studentName" maxlength="150" placeholder="Enter the learner's complete name" required></div>
+      <div class="field"><label for="lrn">Student LRN</label><input id="lrn" maxlength="30" inputmode="numeric" placeholder="Optional"></div>
+      <div class="field"><label>Grade Level <span class="required-mark">*</span></label><button type="button" class="picker-trigger" id="gradePicker" data-picker="grade" aria-haspopup="dialog" aria-controls="selectionModal"><span id="gradePickerValue">Choose grade level</span><span class="picker-chevron">⌄</span></button><input type="hidden" id="grade" value=""></div>
+      <div class="field"><label for="sy">School Year <span class="required-mark">*</span></label><input id="sy" maxlength="30" placeholder="e.g. 2026-2027" value="2026-2027" required></div>
+      <div class="field"><label for="purpose">Purpose <span class="required-mark">*</span></label><input id="purpose" maxlength="500" placeholder="Purpose of request" required></div>
+      <div class="field full hidden" id="requestedFormField">
+        <label>Requested Form <span class="required-mark">*</span></label>
+        <div class="choice-buttons" id="requestedFormChoices" role="group" aria-label="Select requested form">
+          <button type="button" class="choice-option" data-requested-form="SF 9" aria-pressed="false">SF 9</button>
+          <button type="button" class="choice-option" data-requested-form="SF 10" aria-pressed="false">SF 10</button>
+          <button type="button" class="choice-option" data-requested-form="Both" aria-pressed="false">Both</button>
+        </div>
+        <input type="hidden" id="requestedForm" value="">
+        <small class="field-hint" id="requestedFormHint">Please select SF 9, SF 10, or Both.</small>
+      </div>
+      <div class="field full hidden" id="completedLevelField"><label>Completed Level</label><button type="button" class="picker-trigger" id="completedLevelPicker" data-picker="completedLevel" aria-haspopup="dialog" aria-controls="selectionModal"><span id="completedLevelPickerValue">Choose completed level</span><span class="picker-chevron">⌄</span></button><input type="hidden" id="completedLevel" value=""></div>
+    </div>
+    <div class="notice">Fields marked with * are required. The requester's name is used for transaction records and contact purposes; the learner's name is used for the school document.</div>
+    <div class="actions"><button class="primary" id="documentSubmit" type="submit">Submit request</button></div>
+    <div class="status" id="documentStatus" role="status" aria-live="polite"></div>
+  </form>
+</section>
+
+<section class="panel" id="requestReviewPanel">
+  <div class="head">
+    <div><h2>Review Your Request</h2><p>Please check all information before confirming your request.</p></div>
+    <button class="back" id="editRequestButton" type="button">← Edit details</button>
+  </div>
+  <div class="review-card">
+    <h3 id="reviewDocumentName">School Document</h3>
+    <div class="review-grid" id="reviewDetails"></div>
+  </div>
+  <div class="notice">Please make sure the learner's name, grade level, school year, and requested document are correct. Your request will be recorded only after you confirm.</div>
+  <div class="workflow-actions">
+    <button class="primary" id="confirmRequestButton" type="button">Confirm</button>
+    <button class="secondary" id="cancelReviewButton" type="button">Cancel</button>
+  </div>
+  <div class="status" id="reviewStatus" role="status" aria-live="polite"></div>
+</section>
+
+<section class="panel" id="printingPanel">
+  <div class="head">
+    <div><h2>Print Your Documents</h2><p>Your Request Slip and requested school document will be combined into one PDF.</p></div>
+  </div>
+  <div class="print-step">
+    <h3>One PDF — Two Documents</h3>
+    <p>The Request Slip (Office Copy and Client Copy) will appear first, followed by the generated school document. Use the browser's print dialog to choose the number of copies for the complete PDF.</p>
+    <button class="primary" id="openCombinedPdfButton" type="button">Open Combined PDF for Printing</button>
+    <div class="status" id="combinedPrintStatus" role="status" aria-live="polite">The combined PDF will open in a new browser tab. Keep this iDocs tab open.</div>
+    <button class="primary hidden" id="finishPrintingButton" type="button">I've Finished Printing — Continue</button>
+  </div>
+</section>
+
+<section class="panel" id="thankYouPanel">
+  <div style="text-align:center;padding:20px 5px">
+    <div class="thankyou-mark" aria-hidden="true">✓</div>
+    <h2 style="color:#4E1A83;margin:0 0 10px">Thank You!</h2>
+    <p style="color:#756482;line-height:1.7">Your document request and printing process are complete. Please hand the Request Slip together with the Generated Document to the Administrative Officer/Office Personnel for Verification and Signature.</p>
+    <p style="color:#5E526B;line-height:1.7;margin:16px auto 8px;max-width:650px"><strong>Please fill out our Client Satisfaction Measurement System (CSM) as we process your paper.</strong></p>
+    <p class="status" id="redirectStatus">When you are ready, proceed to the Client Satisfaction Measurement System.</p>
+    <a class="primary" id="proceedCsmButton" href="https://www.appsheet.com/start/8694ddba-af4c-4c54-ac17-3bbab4b41e8a?platform=desktop" target="_blank" rel="noopener noreferrer" style="display:inline-block;text-decoration:none;margin-top:12px">Proceed to iCSM ↗</a>
+  </div>
+</section>
+
+<div class="print-reminder" id="printReminderOverlay" aria-hidden="true">
+  <div class="reminder-card" role="dialog" aria-modal="true" aria-labelledby="printReminderTitle">
+    <h2 id="printReminderTitle">Important Printing Reminder</h2>
+    <p>After printing, please hand the Request Slip together with the Generated Document to the Administrative Officer/Office Personnel for Verification and Signature.</p>
+    <div class="countdown-ring" id="countdownRing" style="--progress:0deg"><strong id="countdownNumber">5</strong></div>
+    <div class="status" id="countdownCaption">You may wait or skip the countdown.</div>
+    <div class="countdown-actions">
+      <button class="secondary" id="skipCountdownButton" type="button">Skip countdown</button>
+      <button class="primary hidden" id="proceedPrintingButton" type="button">Proceed to Printing</button>
+    </div>
+  </div>
+</div>
+
 <section class="panel" id="adminPanel"><div class="head"><div><h2 id="adminPanelTitle">Administrator Access</h2><p id="adminPanelDesc">Enter your six-digit administrator PIN.</p></div><button class="back" data-home>← Back</button></div><div class="field" style="max-width:340px"><label for="pin">Administrator PIN</label><input id="pin" type="password" inputmode="numeric" maxlength="6" pattern="[0-9]{6}" placeholder="Enter 6-digit PIN" autocomplete="current-password"></div><div class="notice" id="adminNotice" role="status" aria-live="polite">Sign in using your administrator PIN.</div><div class="actions"><button class="primary" id="adminSignIn" type="button">Sign in</button></div></section>
 <section class="panel" id="adminDashboard">
 <div class="head admin-head">
@@ -467,9 +669,69 @@ footer{color:#897A98}
   <div class="admin-tool-card"><span>🧾</span><strong>Appearance Management</strong><small>Process appearance certificate requests</small><em>Coming in Stage 4</em></div>
 </div>
 </section>
+
+<section class="panel" id="transactionHistoryPanel">
+  <div class="head">
+    <div><h2>Transaction History</h2><p>Search, review, and manage all submitted school document and appearance requests.</p></div>
+    <button class="back" id="historyBackButton" type="button">← Dashboard</button>
+  </div>
+  <div class="history-toolbar">
+    <div class="history-control search-control">
+      <label for="historySearch">SEARCH TRANSACTIONS</label>
+      <input class="history-search" id="historySearch" type="search" placeholder="Request ID, requester, learner, or document">
+    </div>
+    <div class="history-control">
+      <label>DOCUMENT TYPE</label>
+      <button class="picker-trigger history-filter" id="historyTypePicker" type="button"><span id="historyTypeLabel">All document types</span><span class="picker-chevron">⌄</span></button>
+    </div>
+    <div class="history-control">
+      <label>REQUEST STATUS</label>
+      <button class="picker-trigger history-filter" id="historyStatusPicker" type="button"><span id="historyStatusLabel">All statuses</span><span class="picker-chevron">⌄</span></button>
+    </div>
+    <div class="history-actions">
+      <button class="secondary" id="historyResetButton" type="button">Reset</button>
+      <button class="primary" id="historyRefreshButton" type="button">↻ Refresh</button>
+    </div>
+  </div>
+  <div class="history-meta"><span id="historyResultCount">Loading transactions…</span><span id="historyPageLabel"></span></div>
+  <div class="history-table-card">
+    <div class="table-wrap">
+      <table class="history-table">
+        <thead><tr><th>REFERENCE</th><th>REQUESTER</th><th>DOCUMENT</th><th>DATE</th><th>STATUS</th><th>ACTION</th></tr></thead>
+        <tbody id="historyTransactions"><tr><td colspan="6" class="history-empty">Loading transactions…</td></tr></tbody>
+      </table>
+    </div>
+  </div>
+  <div class="history-pagination">
+    <button class="secondary" id="historyPrevButton" type="button">← Previous</button>
+    <span id="historyPageNumber">Page 1</span>
+    <button class="secondary" id="historyNextButton" type="button">Next →</button>
+  </div>
+  <div class="status" id="historyStatusMessage" role="status" aria-live="polite"></div>
+</section>
+
+<section class="panel" id="transactionDetailsPanel">
+  <div class="head">
+    <div><h2>Request Details</h2><p>Review the submitted information and update its processing status.</p></div>
+    <button class="back" id="detailsBackButton" type="button">← Transaction History</button>
+  </div>
+  <div id="requestDetailsContent"></div>
+  <div class="status" id="detailsStatusMessage" role="status" aria-live="polite"></div>
+</section>
+
+<div class="history-popup" id="historyPickerModal" aria-hidden="true">
+  <div class="history-popup-card" role="dialog" aria-modal="true" aria-labelledby="historyPickerTitle">
+    <div class="selection-dialog-head"><h3 id="historyPickerTitle">Choose filter</h3><button class="selection-close" id="historyPickerClose" type="button" aria-label="Close">×</button></div>
+    <p id="historyPickerDescription">Select an option.</p>
+    <div class="history-popup-options" id="historyPickerOptions"></div>
+  </div>
+</div>
+
 <div class="api"><span class="dot" id="apiDot"></span><span id="apiLabel">API connection not yet tested</span></div>
 </main><footer>DES iDocs <span aria-hidden="true">✦</span> Making school services simpler · Daplian Elementary School</footer>
+<div class="selection-overlay" id="selectionModal" aria-hidden="true"><div class="selection-dialog" role="dialog" aria-modal="true" aria-labelledby="selectionTitle" aria-describedby="selectionDescription"><div class="selection-dialog-head"><h3 id="selectionTitle">Choose an option</h3><button type="button" class="selection-close" id="selectionClose" aria-label="Close selection">×</button></div><p id="selectionDescription">Select one option below.</p><div class="selection-options" id="selectionOptions"></div></div></div>
 <div class="overlay" id="languageOverlay"><div class="langcard" role="dialog" aria-modal="true" aria-labelledby="langHeading"><img class="brand-icon lang-icon" src="./iDocs-icon.png" alt="DES iDocs logo"><h2 id="langHeading">Please choose your language.</h2><p>Pumili san lenggwahe.</p><div class="langs"><button class="selected" data-lang="en">English</button><button data-lang="min">Minasbate</button></div><button class="primary continue" id="continue">Continue</button></div></div>
+<script src="https://cdn.jsdelivr.net/npm/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
 <script>
 const API_URL='https://script.google.com/macros/s/AKfycbzlO9BLGTiydq8Gr62kJ2_PVkZpj89bt2V4av7kNoUOTeF-TcpWXRIjtvRSZUReSFW4/exec';
 const T={
@@ -483,12 +745,101 @@ function show(id){document.getElementById('home').style.display=id==='home'?'':'
 document.getElementById('requestMenu').onclick=()=>show('requestPanel');document.getElementById('adminMenu').onclick=()=>show('adminPanel');
 document.querySelectorAll('[data-home]').forEach(b=>b.onclick=()=>show('home'));document.querySelectorAll('[data-request]').forEach(b=>b.onclick=()=>show('requestPanel'));document.querySelectorAll('[data-docs]').forEach(b=>b.onclick=()=>show('documentsPanel'));
 document.getElementById('schoolDocs').onclick=()=>{show('documentsPanel');loadTypes()};document.getElementById('appearance').onclick=()=>show('appearancePanel');
+let selectedDocumentType = null;
+
+// Centralized popup picker used for every selection control in the public forms.
+const PICKER_CONFIG = {
+  grade: { title: 'Select Grade Level', description: 'Choose the learner’s current grade level.', placeholder: 'Choose grade level', options: ['Kinder','Grade 1','Grade 2','Grade 3','Grade 4','Grade 5','Grade 6'] },
+  completedLevel: { title: 'Select Completed Level', description: 'Choose the highest level completed by the learner.', placeholder: 'Choose completed level', options: ['Kinder','Grade 1','Grade 2','Grade 3','Grade 4','Grade 5','Grade 6'] }
+};
+let activePickerKey = '';
+let lastPickerTrigger = null;
+function openSelectionPicker(key) {
+  const config = PICKER_CONFIG[key];
+  if (!config) return;
+  activePickerKey = key;
+  lastPickerTrigger = document.querySelector('[data-picker="' + key + '"]');
+  document.getElementById('selectionTitle').textContent = config.title;
+  document.getElementById('selectionDescription').textContent = config.description;
+  const current = document.getElementById(key).value;
+  const options = document.getElementById('selectionOptions');
+  options.replaceChildren();
+  config.options.forEach(value => {
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.className = 'selection-option';
+    button.setAttribute('aria-pressed', current === value ? 'true' : 'false');
+    const label = document.createElement('span'); label.textContent = value;
+    const check = document.createElement('span'); check.className = 'option-check'; check.textContent = '✓';
+    button.append(label, check);
+    button.addEventListener('click', () => chooseSelection(key, value));
+    options.appendChild(button);
+  });
+  const modal = document.getElementById('selectionModal');
+  modal.classList.add('open'); modal.setAttribute('aria-hidden','false');
+  document.body.style.overflow = 'hidden';
+  const selected = options.querySelector('[aria-pressed="true"]');
+  (selected || options.querySelector('button'))?.focus();
+}
+function chooseSelection(key, value) {
+  document.getElementById(key).value = value;
+  const trigger = document.querySelector('[data-picker="' + key + '"]');
+  const valueLabel = document.getElementById(key + 'PickerValue');
+  valueLabel.textContent = value;
+  trigger.classList.add('is-selected');
+  closeSelectionPicker();
+  if (key === 'grade') setFormStatus('documentStatus', '');
+}
+function closeSelectionPicker() {
+  const modal = document.getElementById('selectionModal');
+  modal.classList.remove('open'); modal.setAttribute('aria-hidden','true');
+  document.body.style.overflow = '';
+  if (lastPickerTrigger) lastPickerTrigger.focus();
+}
+document.querySelectorAll('[data-picker]').forEach(button => button.addEventListener('click', () => openSelectionPicker(button.dataset.picker)));
+document.getElementById('selectionClose').addEventListener('click', closeSelectionPicker);
+document.getElementById('selectionModal').addEventListener('click', event => { if (event.target.id === 'selectionModal') closeSelectionPicker(); });
+document.addEventListener('keydown', event => { if (event.key === 'Escape' && document.getElementById('selectionModal').classList.contains('open')) closeSelectionPicker(); });
+
+function isEnabled(value) { return value === true || String(value).toUpperCase() === 'TRUE'; }
+
+function setRequestedForm(value) {
+  document.getElementById('requestedForm').value = value;
+  document.querySelectorAll('[data-requested-form]').forEach(button => {
+    const selected = button.dataset.requestedForm === value;
+    button.classList.toggle('selected', selected);
+    button.setAttribute('aria-pressed', selected ? 'true' : 'false');
+  });
+  const hint = document.getElementById('requestedFormHint');
+  if (hint) hint.textContent = value ? 'Selected: ' + value : 'Please select SF 9, SF 10, or Both.';
+}
+document.querySelectorAll('[data-requested-form]').forEach(button => {
+  button.addEventListener('click', () => {
+    setRequestedForm(button.dataset.requestedForm);
+    setFormStatus('documentStatus', '');
+  });
+});
+
+function configureDocumentForm(doc) {
+  const isFormRelease = String(doc.DocumentTypeID) === 'DOC008';
+  const isCompletion = String(doc.DocumentTypeID) === 'DOC009';
+  const requestedField = document.getElementById('requestedFormField');
+  const completedField = document.getElementById('completedLevelField');
+  requestedField.classList.toggle('hidden', !isFormRelease);
+  completedField.classList.toggle('hidden', !isCompletion);
+  document.getElementById('completedLevel').required = false;
+  setRequestedForm('');
+  document.getElementById('completedLevel').value = '';
+  document.getElementById('completedLevelPickerValue').textContent = PICKER_CONFIG.completedLevel.placeholder;
+  document.getElementById('completedLevelPicker').classList.remove('is-selected');
+}
+
 async function loadTypes(){
  const status=document.getElementById('documentStatus'),list=document.getElementById('documentTypes');status.className='status';status.textContent='Loading document types from DES iDocs Backend…';list.replaceChildren();
  try{
   const res=await fetch(API_URL+'?action=getDocumentTypes',{method:'GET',redirect:'follow'});if(!res.ok)throw Error('HTTP '+res.status);
   const data=await res.json();if(!data.ok||!Array.isArray(data.documentTypes))throw Error(data.error?.message||'Unexpected API response');
-  data.documentTypes.forEach(doc=>{const b=document.createElement('button');b.className='choice document-choice';const icon=document.createElement('span');icon.className='service-icon';icon.setAttribute('aria-hidden','true');const name=doc.DocumentName.toLowerCase();icon.textContent=name.includes('enrollment')?'🎓':name.includes('moral')?'🏅':name.includes('grades')?'📊':name.includes('transfer')?'📦':name.includes('record')?'🗃️':name.includes('137')?'📄':name.includes('4ps')?'🤝':name.includes('form 9')?'📋':name.includes('completion')?'🏆':'📑';const s=document.createElement('span');s.className='choice-copy';const strong=document.createElement('strong'),small=document.createElement('small'),arrow=document.createElement('span');strong.textContent=doc.DocumentName;small.textContent=doc.Description||'School document';arrow.className='chev';arrow.textContent='›';s.append(strong,small);b.append(icon,s,arrow);b.onclick=()=>{document.getElementById('selectedDoc').textContent=doc.DocumentName;document.getElementById('selectedDesc').textContent=doc.Description||'Complete the required information.';document.getElementById('studentName').required=!!doc.RequiresStudentDetails;document.getElementById('sy').required=!!doc.RequiresSchoolYear;document.getElementById('purpose').required=!!doc.RequiresPurpose;show('docForm')};list.append(b)});
+  data.documentTypes.forEach(doc=>{const b=document.createElement('button');b.className='choice document-choice';const icon=document.createElement('span');icon.className='service-icon';icon.setAttribute('aria-hidden','true');const name=doc.DocumentName.toLowerCase();icon.textContent=name.includes('enrollment')?'🎓':name.includes('moral')?'🏅':name.includes('grades')?'📊':name.includes('transfer')?'📦':name.includes('record')?'🗃️':name.includes('137')?'📄':name.includes('4ps')?'🤝':name.includes('form 9')?'📋':name.includes('completion')?'🏆':'📑';const s=document.createElement('span');s.className='choice-copy';const strong=document.createElement('strong'),small=document.createElement('small'),arrow=document.createElement('span');strong.textContent=doc.DocumentName;small.textContent=doc.Description||'School document';arrow.className='chev';arrow.textContent='›';s.append(strong,small);b.append(icon,s,arrow);b.onclick=()=>{selectedDocumentType=doc;document.getElementById('selectedDoc').textContent=doc.DocumentName;document.getElementById('selectedDesc').textContent=doc.Description||'Complete the required information.';configureDocumentForm(doc);show('docForm')};list.append(b)});
   status.className='status ok';status.textContent='Connected. '+data.documentTypes.length+' active document types loaded.';document.getElementById('apiDot').className='dot ok';document.getElementById('apiLabel').textContent='Backend reachable · document types loaded';
  }catch(err){status.className='status error';status.textContent='Could not load document types: '+err.message+'. This may be a browser cross-origin (CORS) restriction.';document.getElementById('apiDot').className='dot error';document.getElementById('apiLabel').textContent='Browser-to-API connection needs testing'}
 }
@@ -656,6 +1007,742 @@ document.getElementById('adminLogout').addEventListener('click', async () => {
 ['pointerdown','keydown','touchstart','mousemove'].forEach(eventName => {
   document.addEventListener(eventName, () => { if (adminToken) refreshAdminInactivityTimer(); }, {passive:true});
 });
+
+// Public request submission handlers.
+function setFormStatus(id, message, type='') {
+  const el = document.getElementById(id);
+  el.textContent = message;
+  el.className = 'status' + (type ? ' ' + type : '');
+}
+function setSubmitting(button, busy, label) {
+  button.disabled = busy;
+  button.textContent = busy ? 'Submitting…' : label;
+}
+function inputValue(id) { return document.getElementById(id).value.trim(); }
+function clearDocumentFormAfterSuccess() {
+  document.getElementById('documentRequestForm').reset();
+  document.getElementById('sy').value = '2026-2027';
+  document.getElementById('gradePickerValue').textContent = PICKER_CONFIG.grade.placeholder;
+  document.getElementById('gradePicker').classList.remove('is-selected');
+  if (selectedDocumentType) configureDocumentForm(selectedDocumentType);
+}
+
+
+// Public school-document review, confirmation and printing workflow.
+let pendingDocumentData = null;
+let confirmedPrintFiles = null;
+let reminderInterval = null;
+let reminderRemaining = 5;
+
+
+function makeSubmissionId() {
+  if (window.crypto && typeof window.crypto.randomUUID === 'function') {
+    return window.crypto.randomUUID();
+  }
+  return 'DES-' + Date.now().toString(36) + '-' +
+    Math.random().toString(36).slice(2, 12);
+}
+
+function addReviewItem(container, label, value, full=false) {
+  const item = document.createElement('div');
+  item.className = 'review-item' + (full ? ' full' : '');
+  const small = document.createElement('small');
+  small.textContent = label;
+  const strong = document.createElement('strong');
+  strong.textContent = value || '—';
+  item.append(small, strong);
+  container.appendChild(item);
+}
+
+function renderDocumentReview(data) {
+  const details = document.getElementById('reviewDetails');
+  details.replaceChildren();
+  document.getElementById('reviewDocumentName').textContent =
+    selectedDocumentType ? selectedDocumentType.DocumentName : 'School Document';
+
+  addReviewItem(details, "Requester's Full Name", data.RequesterName, true);
+  addReviewItem(details, 'Contact Number', data.ClientContact || 'Not provided');
+  addReviewItem(details, "Learner's Name", data.StudentName, true);
+  addReviewItem(details, 'Student LRN', data.StudentLRN || 'Not provided');
+  addReviewItem(details, 'Grade Level', data.GradeLevel);
+  addReviewItem(details, 'School Year', data.SchoolYear);
+  addReviewItem(details, 'Purpose', data.Purpose, true);
+
+  if (data.RequestedForm) {
+    addReviewItem(details, 'Requested Form', data.RequestedForm);
+  }
+  if (data.CompletedLevel) {
+    addReviewItem(details, 'Completed Level', data.CompletedLevel);
+  }
+}
+
+function collectDocumentFormData() {
+  return {
+    RequesterName: inputValue('requesterName'),
+    ClientContact: inputValue('clientContact'),
+    StudentName: inputValue('studentName'),
+    StudentLRN: inputValue('lrn'),
+    GradeLevel: inputValue('grade'),
+    DocumentTypeID: selectedDocumentType.DocumentTypeID,
+    SchoolYear: inputValue('sy'),
+    Purpose: inputValue('purpose'),
+    RequestedForm: inputValue('requestedForm'),
+    CompletedLevel: inputValue('completedLevel'),
+    Details: []
+  };
+}
+
+document.getElementById('documentRequestForm').addEventListener('submit', event => {
+  event.preventDefault();
+  const form = event.currentTarget;
+
+  if (!selectedDocumentType) {
+    setFormStatus('documentStatus', 'Please select a document type first.', 'error');
+    return;
+  }
+
+  if (String(selectedDocumentType.DocumentTypeID) === 'DOC008' &&
+      !inputValue('requestedForm')) {
+    setFormStatus('documentStatus', 'Please select SF 9, SF 10, or Both.', 'error');
+    document.getElementById('requestedFormChoices').scrollIntoView({
+      behavior:'smooth', block:'center'
+    });
+    return;
+  }
+
+  if (!inputValue('grade')) {
+    setFormStatus('documentStatus', 'Please select the learner’s grade level.', 'error');
+    document.getElementById('gradePicker').focus();
+    return;
+  }
+
+  if (!form.reportValidity()) return;
+
+  pendingDocumentData = collectDocumentFormData();
+  pendingDocumentData.SubmissionID = makeSubmissionId();
+
+  renderDocumentReview(pendingDocumentData);
+  setFormStatus('reviewStatus', '');
+  show('requestReviewPanel');
+});
+
+document.getElementById('editRequestButton').addEventListener('click', () => {
+  show('docForm');
+});
+
+document.getElementById('cancelReviewButton').addEventListener('click', () => {
+  pendingDocumentData = null;
+  show('docForm');
+});
+
+function base64ToUint8Array(base64) {
+  const binary = atob(base64);
+  const bytes = new Uint8Array(binary.length);
+  for (let i = 0; i < binary.length; i++) bytes[i] = binary.charCodeAt(i);
+  return bytes;
+}
+
+async function buildCombinedPdf(requestSlipBase64, certificateBase64) {
+  if (!window.PDFLib || !window.PDFLib.PDFDocument) {
+    throw new Error('The PDF merge component could not be loaded. Check the kiosk internet connection and try again.');
+  }
+  if (!requestSlipBase64 || !certificateBase64) {
+    throw new Error('The PDF data is incomplete. Please contact the Administrative Office.');
+  }
+
+  const { PDFDocument } = window.PDFLib;
+  const mergedPdf = await PDFDocument.create();
+  const slipPdf = await PDFDocument.load(base64ToUint8Array(requestSlipBase64));
+  const certificatePdf = await PDFDocument.load(base64ToUint8Array(certificateBase64));
+
+  const slipPages = await mergedPdf.copyPages(slipPdf, slipPdf.getPageIndices());
+  slipPages.forEach(page => mergedPdf.addPage(page));
+
+  const certificatePages = await mergedPdf.copyPages(
+    certificatePdf,
+    certificatePdf.getPageIndices()
+  );
+  certificatePages.forEach(page => mergedPdf.addPage(page));
+
+  const mergedBytes = await mergedPdf.save();
+  return new Blob([mergedBytes], { type: 'application/pdf' });
+}
+
+function showPrintReminder() {
+  const overlay = document.getElementById('printReminderOverlay');
+  overlay.classList.add('open');
+  overlay.setAttribute('aria-hidden', 'false');
+
+  reminderRemaining = 5;
+  updateCountdownDisplay();
+  document.getElementById('skipCountdownButton').classList.remove('hidden');
+  document.getElementById('proceedPrintingButton').classList.add('hidden');
+
+  if (reminderInterval) clearInterval(reminderInterval);
+
+  reminderInterval = setInterval(() => {
+    reminderRemaining -= 1;
+    updateCountdownDisplay();
+
+    if (reminderRemaining <= 0) {
+      clearInterval(reminderInterval);
+      reminderInterval = null;
+      enableProceedPrinting();
+    }
+  }, 1000);
+}
+
+function updateCountdownDisplay() {
+  document.getElementById('countdownNumber').textContent =
+    String(Math.max(0, reminderRemaining));
+  const progress = ((5 - Math.max(0, reminderRemaining)) / 5) * 360;
+  document.getElementById('countdownRing').style.setProperty(
+    '--progress', progress + 'deg'
+  );
+}
+
+function enableProceedPrinting() {
+  document.getElementById('countdownCaption').textContent =
+    'You may now proceed to printing.';
+  document.getElementById('skipCountdownButton').classList.add('hidden');
+  document.getElementById('proceedPrintingButton').classList.remove('hidden');
+}
+
+document.getElementById('skipCountdownButton').addEventListener('click', () => {
+  if (reminderInterval) clearInterval(reminderInterval);
+  reminderInterval = null;
+  reminderRemaining = 0;
+  updateCountdownDisplay();
+  enableProceedPrinting();
+});
+
+document.getElementById('confirmRequestButton').addEventListener('click', async () => {
+  if (!pendingDocumentData) {
+    setFormStatus('reviewStatus', 'Your request details are no longer available. Please return to the form.', 'error');
+    return;
+  }
+
+  const button = document.getElementById('confirmRequestButton');
+  button.disabled = true;
+  button.textContent = 'Confirming and generating PDFs…';
+  setFormStatus('reviewStatus', 'Saving your request and preparing your documents. Please do not close this page.');
+
+  try {
+    const result = await adminApi('confirmDocumentRequest', {
+      data: pendingDocumentData
+    });
+
+    if (!result || result.ok !== true) {
+      throw new Error(result?.error?.message ||
+        'Your request could not be confirmed.');
+    }
+
+    if (!result.requestSlip || !result.certificate ||
+        !result.requestSlipBase64 || !result.certificateBase64) {
+      throw new Error(
+        'Your request was saved, but the combined-print data is incomplete. ' +
+        'Please keep reference ' + (result.requestId || 'unavailable') +
+        ' and contact the Administrative Office.'
+      );
+    }
+
+    confirmedPrintFiles = {
+      requestId: result.requestId,
+      submissionId: result.submissionId || pendingDocumentData.SubmissionID,
+      requestSlipBase64: result.requestSlipBase64,
+      certificateBase64: result.certificateBase64
+    };
+
+    if (!confirmedPrintFiles.requestId || !confirmedPrintFiles.submissionId) {
+      throw new Error('The request was saved, but its secure printing reference is incomplete. Please contact the Administrative Office and provide the request reference.');
+    }
+
+    // The request is now saved; do not allow a second submission.
+    clearDocumentFormAfterSuccess();
+    showPrintReminder();
+
+  } catch (error) {
+    setFormStatus(
+      'reviewStatus',
+      error.message + ' Your submission reference has been retained. You may retry Confirm without creating a new reference.',
+      'error'
+    );
+  } finally {
+    button.disabled = false;
+    button.textContent = 'Confirm';
+  }
+});
+
+async function startCombinedPdfPrinting() {
+  const status = document.getElementById('combinedPrintStatus');
+  const openButton = document.getElementById('openCombinedPdfButton');
+  let printWindow = null;
+
+  try {
+    if (!confirmedPrintFiles) throw new Error('The confirmed PDF data is missing.');
+
+    // This must run directly inside the user's click event. The blank tab is
+    // opened before awaiting the browser-side PDF merge to avoid popup blocks.
+    printWindow = window.open('about:blank', '_blank');
+    if (!printWindow) {
+      throw new Error('The browser blocked the new PDF tab. Please allow pop-ups for this kiosk and try again.');
+    }
+
+    openButton.disabled = true;
+    openButton.textContent = 'Preparing Combined PDF…';
+    status.textContent = 'Combining the Request Slip and school document. Please wait…';
+
+    const pdfBlob = await buildCombinedPdf(
+      confirmedPrintFiles.requestSlipBase64,
+      confirmedPrintFiles.certificateBase64
+    );
+    const pdfUrl = URL.createObjectURL(pdfBlob);
+    printWindow.location.replace(pdfUrl);
+
+    // Mark the request Ready only after the combined PDF tab has been opened.
+    const readyResult = await adminApi('markRequestReady', {
+      data: {
+        requestId: confirmedPrintFiles.requestId,
+        submissionId: confirmedPrintFiles.submissionId
+      }
+    });
+    if (!readyResult || readyResult.ok !== true) {
+      // The PDF is already open. Keep it open even if the status update fails.
+      status.textContent = 'The combined PDF is open and ready to print, but the status update failed: ' +
+        (readyResult?.error?.message || 'Unknown API error') +
+        '. Keep this PDF tab open. You may print now; the administrator can correct the status.';
+    } else {
+      status.textContent = 'The combined PDF is open in the new tab. Your request is marked Ready. Print the complete document there, then close that tab or return to this iDocs tab.';
+    }
+    document.getElementById('finishPrintingButton').classList.remove('hidden');
+    openButton.classList.add('hidden');
+  } catch (error) {
+    // Close only a blank tab when PDF preparation itself failed. Once the PDF
+    // URL has been assigned, do not close it because a later API call failed.
+    if (printWindow && !printWindow.closed && !printWindow.location.href.startsWith('blob:')) {
+      printWindow.close();
+    }
+    status.textContent = error.message;
+    openButton.classList.remove('hidden');
+  } finally {
+    openButton.disabled = false;
+    openButton.textContent = 'Retry Opening Combined PDF';
+  }
+}
+
+document.getElementById('proceedPrintingButton').addEventListener('click', () => {
+  document.getElementById('printReminderOverlay').classList.remove('open');
+  document.getElementById('printReminderOverlay').setAttribute('aria-hidden', 'true');
+  document.getElementById('finishPrintingButton').classList.add('hidden');
+  document.getElementById('openCombinedPdfButton').classList.remove('hidden');
+  show('printingPanel');
+  startCombinedPdfPrinting();
+});
+
+document.getElementById('openCombinedPdfButton').addEventListener('click', () => {
+  startCombinedPdfPrinting();
+});
+
+document.getElementById('finishPrintingButton').addEventListener('click', async event => {
+  const button = event.currentTarget;
+  if (!confirmedPrintFiles) {
+    document.getElementById('combinedPrintStatus').textContent = 'The request reference is unavailable. Please contact the Administrative Office before leaving this page.';
+    return;
+  }
+
+  button.disabled = true;
+  button.textContent = 'Completing…';
+  try {
+    const releaseResult = await adminApi('completeRequestRelease', {
+      data: {
+        requestId: confirmedPrintFiles.requestId,
+        submissionId: confirmedPrintFiles.submissionId
+      }
+    });
+    if (!releaseResult || releaseResult.ok !== true) {
+      throw new Error(releaseResult?.error?.message || 'The request could not be marked Released.');
+    }
+  } catch (error) {
+    document.getElementById('combinedPrintStatus').textContent = error.message + ' Please try again; do not close this page yet.';
+    button.disabled = false;
+    button.textContent = 'Retry — I’ve Finished Printing';
+    return;
+  }
+
+  show('thankYouPanel');
+  document.getElementById('redirectStatus').textContent =
+    'Your paper has been handed over. You may now proceed to the Client Satisfaction Measurement System.';
+});
+
+document.getElementById('appearanceForm').addEventListener('submit', async event => {
+  event.preventDefault();
+  const form = event.currentTarget;
+  const button = document.getElementById('appearanceSubmit');
+  if (!form.reportValidity()) return;
+  const data = {
+    Name: inputValue('appName'),
+    AppearanceDate: inputValue('appDate'),
+    Purpose: inputValue('appPurpose')
+  };
+  setSubmitting(button, true, 'Submit request');
+  setFormStatus('appearanceStatus', 'Submitting your request…');
+  try {
+    const result = await adminApi('submitAppearanceRequest', {data});
+    if (!result || result.ok !== true) throw new Error(result?.error?.message || 'The request could not be submitted.');
+    const reference = result.appearanceId || 'Reference unavailable';
+    setFormStatus('appearanceStatus', 'Your Certificate of Appearance request has been submitted successfully. Reference number: ' + reference + '.', 'ok');
+    form.reset();
+  } catch (error) {
+    setFormStatus('appearanceStatus', 'Submission failed: ' + error.message + '. Your entries have been retained; please try again.', 'error');
+  } finally {
+    setSubmitting(button, false, 'Submit request');
+  }
+});
+
+
+// ===== Stage 3: Transaction History and Request Management =====
+const HISTORY_PAGE_SIZE = 10;
+const historyState = {
+  page: 1, totalPages: 1, total: 0, search: '', documentType: '', status: '',
+  documentTypes: [], currentRequestId: '', currentRecord: null, currentType: ''
+};
+let historySearchTimer = null;
+let activeHistoryPicker = '';
+
+function setHistoryMessage(message, type='') {
+  const el = document.getElementById('historyStatusMessage');
+  el.textContent = message || '';
+  el.className = 'status' + (type ? ' ' + type : '');
+}
+function setDetailsMessage(message, type='') {
+  const el = document.getElementById('detailsStatusMessage');
+  el.textContent = message || '';
+  el.className = 'status' + (type ? ' ' + type : '');
+}
+function safeText(value) {
+  return value === null || value === undefined || String(value).trim() === '' ? '—' : String(value);
+}
+function historyFilterOptions(kind) {
+  if (kind === 'type') {
+    return [{value:'',label:'All document types'}].concat(
+      historyState.documentTypes.map(item => ({value:String(item.DocumentTypeID),label:item.DocumentName}))
+    );
+  }
+  return [
+    {value:'',label:'All statuses'},
+    {value:'Pending',label:'Pending'},
+    {value:'Processing',label:'Processing'},
+    {value:'Ready',label:'Ready'},
+    {value:'Released',label:'Released'},
+    {value:'Rejected',label:'Rejected'}
+  ];
+}
+function openHistoryPicker(kind) {
+  activeHistoryPicker = kind;
+  const isType = kind === 'type';
+  const current = isType ? historyState.documentType : historyState.status;
+  document.getElementById('historyPickerTitle').textContent = isType ? 'Filter by Document Type' : 'Filter by Request Status';
+  document.getElementById('historyPickerDescription').textContent = isType ? 'Choose a document category to display.' : 'Choose the processing status to display.';
+  const options = document.getElementById('historyPickerOptions');
+  options.replaceChildren();
+  historyFilterOptions(kind).forEach(option => {
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.textContent = option.label;
+    button.setAttribute('aria-pressed', String(option.value) === current ? 'true' : 'false');
+    button.addEventListener('click', () => {
+      if (isType) {
+        historyState.documentType = option.value;
+        document.getElementById('historyTypeLabel').textContent = option.label;
+      } else {
+        historyState.status = option.value;
+        document.getElementById('historyStatusLabel').textContent = option.label;
+      }
+      historyState.page = 1;
+      closeHistoryPicker();
+      loadTransactionHistory();
+    });
+    options.appendChild(button);
+  });
+  const modal = document.getElementById('historyPickerModal');
+  modal.classList.add('open');
+  modal.setAttribute('aria-hidden','false');
+}
+function closeHistoryPicker() {
+  const modal = document.getElementById('historyPickerModal');
+  modal.classList.remove('open');
+  modal.setAttribute('aria-hidden','true');
+}
+document.getElementById('historyTypePicker').addEventListener('click', () => openHistoryPicker('type'));
+document.getElementById('historyStatusPicker').addEventListener('click', () => openHistoryPicker('status'));
+document.getElementById('historyPickerClose').addEventListener('click', closeHistoryPicker);
+document.getElementById('historyPickerModal').addEventListener('click', event => {
+  if (event.target.id === 'historyPickerModal') closeHistoryPicker();
+});
+document.addEventListener('keydown', event => {
+  if (event.key === 'Escape') closeHistoryPicker();
+});
+
+async function loadHistoryDocumentTypes() {
+  const result = await adminApi('getAdminDocumentTypes', {token:adminToken});
+  if (!result || result.ok !== true || !Array.isArray(result.documentTypes)) {
+    throw new Error(result?.error?.message || 'Could not load document type filters.');
+  }
+  historyState.documentTypes = result.documentTypes.map(item => ({
+    DocumentTypeID:item.DocumentTypeID, DocumentName:item.DocumentName
+  }));
+  if (!historyState.documentTypes.some(item => item.DocumentTypeID === 'APPEARANCE')) {
+    historyState.documentTypes.push({DocumentTypeID:'APPEARANCE',DocumentName:'Certificate of Appearance'});
+  }
+}
+async function openTransactionHistory() {
+  show('transactionHistoryPanel');
+  setHistoryMessage('Loading transaction history…');
+  try {
+    await loadHistoryDocumentTypes();
+    await loadTransactionHistory();
+    refreshAdminInactivityTimer();
+  } catch (error) {
+    setHistoryMessage('Could not initialize transaction history: ' + error.message, 'error');
+  }
+}
+async function loadTransactionHistory() {
+  const panel = document.getElementById('transactionHistoryPanel');
+  panel.classList.add('history-loading');
+  const tbody = document.getElementById('historyTransactions');
+  tbody.replaceChildren();
+  const loadingRow = document.createElement('tr');
+  const loadingCell = document.createElement('td');
+  loadingCell.colSpan = 6; loadingCell.className = 'history-empty'; loadingCell.textContent = 'Loading transactions…';
+  loadingRow.appendChild(loadingCell); tbody.appendChild(loadingRow);
+  try {
+    const filters = {
+      page:historyState.page, pageSize:HISTORY_PAGE_SIZE,
+      search:historyState.search, documentType:historyState.documentType, status:historyState.status
+    };
+    const result = await adminApi('getTransactionHistory', {token:adminToken,filters});
+    if (!result || result.ok !== true) throw new Error(result?.error?.message || 'Unable to retrieve transactions.');
+    const rows = Array.isArray(result.transactions) ? result.transactions : [];
+    const pagination = result.pagination || {};
+    historyState.total = Number(pagination.total) || 0;
+    historyState.page = Number(pagination.page) || 1;
+    historyState.totalPages = Math.max(1, Number(pagination.totalPages) || 1);
+    tbody.replaceChildren();
+    if (!rows.length) {
+      const row = document.createElement('tr');
+      const cell = document.createElement('td'); cell.colSpan = 6; cell.className = 'history-empty';
+      cell.textContent = 'No transactions match your search and filters.';
+      row.appendChild(cell); tbody.appendChild(row);
+    } else {
+      rows.forEach(item => {
+        const row = document.createElement('tr');
+        const values = [
+          safeText(item.RequestID), safeText(item.RequesterName),
+          safeText(item.DocumentName), safeText(item.RequestDate)
+        ];
+        values.forEach(value => { const td = document.createElement('td'); td.textContent = value; row.appendChild(td); });
+        const statusCell = document.createElement('td');
+        const pill = document.createElement('span');
+        pill.className = 'status-pill ' + statusClass(item.Status);
+        pill.textContent = item.Status || 'Pending';
+        statusCell.appendChild(pill); row.appendChild(statusCell);
+        const actionCell = document.createElement('td');
+        const open = document.createElement('button');
+        open.type = 'button'; open.className = 'history-open'; open.textContent = 'View';
+        open.addEventListener('click', () => openRequestDetails(item.RequestID));
+        actionCell.appendChild(open); row.appendChild(actionCell);
+        tbody.appendChild(row);
+      });
+    }
+    document.getElementById('historyResultCount').textContent =
+      historyState.total + ' transaction(s) found';
+    document.getElementById('historyPageLabel').textContent =
+      historyState.total ? 'Showing ' + ((historyState.page - 1) * HISTORY_PAGE_SIZE + 1) +
+      '–' + Math.min(historyState.page * HISTORY_PAGE_SIZE, historyState.total) : 'No results';
+    document.getElementById('historyPageNumber').textContent =
+      'Page ' + historyState.page + ' of ' + historyState.totalPages;
+    document.getElementById('historyPrevButton').disabled = historyState.page <= 1;
+    document.getElementById('historyNextButton').disabled = historyState.page >= historyState.totalPages;
+    setHistoryMessage('');
+    refreshAdminInactivityTimer();
+  } catch (error) {
+    tbody.replaceChildren();
+    const row = document.createElement('tr'); const cell = document.createElement('td');
+    cell.colSpan = 6; cell.className = 'history-empty'; cell.textContent = 'Unable to load transactions.';
+    row.appendChild(cell); tbody.appendChild(row);
+    setHistoryMessage('Transaction history could not be loaded: ' + error.message, 'error');
+  } finally {
+    panel.classList.remove('history-loading');
+  }
+}
+document.getElementById('historySearch').addEventListener('input', event => {
+  historyState.search = event.target.value.trim();
+  historyState.page = 1;
+  clearTimeout(historySearchTimer);
+  historySearchTimer = setTimeout(loadTransactionHistory, 350);
+});
+document.getElementById('historyResetButton').addEventListener('click', () => {
+  historyState.search = ''; historyState.documentType = ''; historyState.status = ''; historyState.page = 1;
+  document.getElementById('historySearch').value = '';
+  document.getElementById('historyTypeLabel').textContent = 'All document types';
+  document.getElementById('historyStatusLabel').textContent = 'All statuses';
+  loadTransactionHistory();
+});
+document.getElementById('historyRefreshButton').addEventListener('click', loadTransactionHistory);
+document.getElementById('historyPrevButton').addEventListener('click', () => {
+  if (historyState.page > 1) { historyState.page--; loadTransactionHistory(); }
+});
+document.getElementById('historyNextButton').addEventListener('click', () => {
+  if (historyState.page < historyState.totalPages) { historyState.page++; loadTransactionHistory(); }
+});
+document.getElementById('historyBackButton').addEventListener('click', () => show('adminDashboard'));
+document.getElementById('detailsBackButton').addEventListener('click', () => show('transactionHistoryPanel'));
+
+function addHistoryDetail(container, label, value, full=false) {
+  const item = document.createElement('div');
+  item.className = 'history-detail-item' + (full ? ' full' : '');
+  const small = document.createElement('small'); small.textContent = label;
+  const strong = document.createElement('strong'); strong.textContent = safeText(value);
+  item.append(small,strong); container.appendChild(item);
+}
+function renderRequestDetails(result) {
+  const host = document.getElementById('requestDetailsContent');
+  host.replaceChildren();
+  const record = result.record || {};
+  const isAppearance = result.type === 'Appearance';
+  const heading = document.createElement('div'); heading.className = 'review-card';
+  const h3 = document.createElement('h3'); h3.textContent = isAppearance ? 'Certificate of Appearance' : (record.DocumentName || 'School Document Request');
+  heading.appendChild(h3);
+  const grid = document.createElement('div'); grid.className = 'history-detail-grid';
+  const fields = isAppearance ? [
+    ['Reference ID',record.AppearanceID || historyState.currentRequestId],
+    ['Requester',record.Name], ['Date of Appearance',record.AppearanceDate],
+    ['Purpose',record.Purpose], ['Request Date',record.RequestDate],
+    ['Status',record.Status || 'Pending'], ['Remarks',record.Remarks]
+  ] : [
+    ['Reference ID',record.RequestID], ['Requester',record.RequesterName],
+    ['Contact Number',record.ClientContact], ['Learner Name',record.StudentName],
+    ['Student LRN',record.StudentLRN], ['Grade Level',record.GradeLevel],
+    ['Document Type',record.DocumentName || record.DocumentTypeID],
+    ['School Year',record.SchoolYear], ['Purpose',record.Purpose],
+    ['Requested Form',record.RequestedForm], ['Completed Level',record.CompletedLevel],
+    ['Request Date',record.RequestDate], ['Status',record.Status || 'Pending'],
+    ['Remarks',record.Remarks], ['PDF Link',record.PDFLink]
+  ];
+  fields.forEach(([label,value]) => addHistoryDetail(grid,label,value,label==='Purpose'||label==='Remarks'||label==='PDF Link'));
+  heading.appendChild(grid); host.appendChild(heading);
+
+  if (!isAppearance && Array.isArray(result.details) && result.details.length) {
+    const detailSection = document.createElement('div'); detailSection.className = 'history-detail-list';
+    const title = document.createElement('h3'); title.textContent = 'Additional Request Details'; detailSection.appendChild(title);
+    result.details.forEach(detail => {
+      if (String(detail.FieldName || '').startsWith('SYSTEM_')) return;
+      const box = document.createElement('div'); box.className = 'history-detail-item';
+      const label = document.createElement('small'); label.textContent = detail.FieldName || 'Detail';
+      const value = document.createElement('strong'); value.textContent = safeText(detail.FieldValue);
+      box.append(label,value); detailSection.appendChild(box);
+    });
+    if (detailSection.children.length > 1) host.appendChild(detailSection);
+  }
+
+  const edit = document.createElement('div'); edit.className = 'history-edit-card';
+  const editTitle = document.createElement('h3'); editTitle.textContent = 'Manage Request';
+  const fieldsWrap = document.createElement('div'); fieldsWrap.className = 'history-edit-fields';
+  const statusField = document.createElement('div'); statusField.className = 'history-control';
+  const statusLabel = document.createElement('label'); statusLabel.textContent = 'PROCESSING STATUS';
+  const statusPicker = document.createElement('button'); statusPicker.type='button'; statusPicker.className='picker-trigger';
+  statusPicker.id='detailStatusPicker';
+  const statusValue = document.createElement('span'); statusValue.id='detailStatusValue'; statusValue.textContent=record.Status || 'Pending';
+  const chevron = document.createElement('span'); chevron.className='picker-chevron'; chevron.textContent='⌄';
+  statusPicker.append(statusValue,chevron); statusField.append(statusLabel,statusPicker);
+  statusPicker.addEventListener('click', () => openDetailStatusPicker());
+  const remarksField = document.createElement('div'); remarksField.className='history-control';
+  const remarksLabel = document.createElement('label'); remarksLabel.textContent='ADMINISTRATIVE REMARKS';
+  const remarks = document.createElement('textarea'); remarks.className='history-remarks'; remarks.id='detailRemarks';
+  remarks.maxLength=1000; remarks.placeholder='Add notes or instructions for this request…'; remarks.value=record.Remarks || '';
+  remarksField.append(remarksLabel,remarks);
+  fieldsWrap.append(statusField,remarksField);
+  const actions = document.createElement('div'); actions.className='actions';
+  const save = document.createElement('button'); save.type='button'; save.className='primary'; save.id='saveRequestStatusButton'; save.textContent='Save Changes';
+  save.addEventListener('click', saveRequestStatus);
+  actions.appendChild(save);
+  edit.append(editTitle,fieldsWrap,actions); host.appendChild(edit);
+}
+function openDetailStatusPicker() {
+  activeHistoryPicker = 'detailStatus';
+  document.getElementById('historyPickerTitle').textContent = 'Update Request Status';
+  document.getElementById('historyPickerDescription').textContent = 'Select the new processing status.';
+  const current = document.getElementById('detailStatusValue')?.textContent || 'Pending';
+  const options = document.getElementById('historyPickerOptions'); options.replaceChildren();
+  ['Pending','Processing','Ready','Released','Rejected'].forEach(value => {
+    const button=document.createElement('button'); button.type='button'; button.textContent=value;
+    button.setAttribute('aria-pressed',value===current?'true':'false');
+    button.addEventListener('click',()=>{
+      document.getElementById('detailStatusValue').textContent=value;
+      closeHistoryPicker();
+    });
+    options.appendChild(button);
+  });
+  const modal=document.getElementById('historyPickerModal'); modal.classList.add('open'); modal.setAttribute('aria-hidden','false');
+}
+async function openRequestDetails(requestId) {
+  historyState.currentRequestId = String(requestId);
+  setDetailsMessage('Loading request details…');
+  show('transactionDetailsPanel');
+  document.getElementById('requestDetailsContent').replaceChildren();
+  try {
+    const result = await adminApi('getRequestDetails',{token:adminToken,requestId:historyState.currentRequestId});
+    if (!result || result.ok !== true) throw new Error(result?.error?.message || 'Could not load request details.');
+    historyState.currentRecord = result.record || {};
+    historyState.currentType = result.type || '';
+    renderRequestDetails(result);
+    setDetailsMessage('');
+    refreshAdminInactivityTimer();
+  } catch(error) {
+    setDetailsMessage('Request details could not be loaded: ' + error.message,'error');
+  }
+}
+async function saveRequestStatus() {
+  const button=document.getElementById('saveRequestStatusButton');
+  const status=document.getElementById('detailStatusValue')?.textContent || '';
+  const remarks=document.getElementById('detailRemarks')?.value || '';
+  if (!historyState.currentRequestId) return;
+  button.disabled=true; button.textContent='Saving…';
+  setDetailsMessage('Updating request status and remarks…');
+  try {
+    const result=await adminApi('updateRequestStatus',{
+      token:adminToken,requestId:historyState.currentRequestId,status,remarks
+    });
+    if (!result || result.ok !== true) throw new Error(result?.error?.message || 'The request could not be updated.');
+    if (historyState.currentRecord) {
+      historyState.currentRecord.Status=status;
+      historyState.currentRecord.Remarks=remarks;
+    }
+    setDetailsMessage('Request status and remarks have been saved.','ok');
+    refreshAdminInactivityTimer();
+    await loadTransactionHistory();
+  } catch(error) {
+    setDetailsMessage('Could not save changes: ' + error.message,'error');
+  } finally {
+    button.disabled=false; button.textContent='Save Changes';
+  }
+}
+
+// Add a working entry point to the existing administrator dashboard tool card.
+const transactionTool = Array.from(document.querySelectorAll('.admin-tool-card')).find(card =>
+  card.querySelector('strong')?.textContent.trim() === 'Transaction History'
+);
+if (transactionTool) {
+  transactionTool.style.cursor='pointer';
+  transactionTool.setAttribute('role','button');
+  transactionTool.setAttribute('tabindex','0');
+  transactionTool.setAttribute('aria-label','Open transaction history');
+  transactionTool.querySelector('em').textContent='Open transaction history →';
+  transactionTool.addEventListener('click',openTransactionHistory);
+  transactionTool.addEventListener('keydown',event=>{
+    if(event.key==='Enter'||event.key===' '){event.preventDefault();openTransactionHistory();}
+  });
+}
 
 applyLang();
 </script>
