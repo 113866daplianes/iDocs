@@ -820,11 +820,11 @@ button:focus-visible,a:focus-visible{
 }
 
 
-/* ===== Persistent header while scrolling ===== */
+/* ===== Header remains in normal page flow (not sticky) ===== */
 .topbar{
-  position:sticky !important;
-  top:0 !important;
-  z-index:9999 !important;
+  position:relative !important;
+  top:auto !important;
+  z-index:5 !important;
   align-self:stretch;
   isolation:isolate;
   width:100%;
