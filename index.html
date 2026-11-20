@@ -2528,5 +2528,38 @@ if ('serviceWorker' in navigator && (location.protocol === 'https:' || location.
   });
 }
 
+
+
+// Basic browser-inspection deterrents. These are not a security boundary.
+(function installBrowserDeterrents(){
+  // Disable the page context menu (right-click / long-press context menu).
+  document.addEventListener('contextmenu', event => {
+    event.preventDefault();
+  }, {capture:true});
+
+  // Block common keyboard shortcuts for developer tools and page source.
+  document.addEventListener('keydown', event => {
+    const key = String(event.key || '').toLowerCase();
+    const ctrlOrMeta = event.ctrlKey || event.metaKey;
+    const devToolsShortcut =
+      event.key === 'F12' ||
+      (ctrlOrMeta && event.shiftKey && ['i','j','c'].includes(key)) ||
+      (ctrlOrMeta && !event.shiftKey && key === 'u');
+
+    if (devToolsShortcut) {
+      event.preventDefault();
+      event.stopPropagation();
+      if (typeof event.stopImmediatePropagation === 'function') event.stopImmediatePropagation();
+    }
+  }, {capture:true});
+
+  // Prevent dragging application images/assets out of the page.
+  document.addEventListener('dragstart', event => {
+    if (event.target && event.target.closest && event.target.closest('img,svg')) {
+      event.preventDefault();
+    }
+  }, {capture:true});
+})();
+
 </script>
 </body></html>
