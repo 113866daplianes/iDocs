@@ -1091,6 +1091,12 @@ button:focus-visible,a:focus-visible{outline:3px solid #F0D9FF!important;outline
   .admin-nav-button{font-size:11px}
 }
 
+
+/* Admin navigation is anchored directly beneath the persistent welcome panel. */
+#adminDashboard .admin-nav{margin:16px 0 22px;position:relative;z-index:2}
+#adminOverviewContent.hidden{display:none!important}
+#adminDashboard.active{display:block}
+
 </style>
   <link rel="icon" type="image/png" sizes="512x512" href="./iDocs-icon.png">
   <link rel="apple-touch-icon" href="./iDocs-icon.png">
@@ -1249,6 +1255,14 @@ button:focus-visible,a:focus-visible{outline:3px solid #F0D9FF!important;outline
   <span class="admin-welcome-icon" aria-hidden="true">👋</span>
   <span><strong>Welcome to DES iDocs Administration</strong><small>Your administrator session is active.</small></span>
 </div>
+<nav class="admin-nav hidden" id="adminNav" aria-label="Administrator navigation">
+  <button type="button" class="admin-nav-button active" data-admin-page="adminDashboard" aria-current="page"><span>📊</span> Overview</button>
+  <button type="button" class="admin-nav-button" data-admin-page="transactionHistoryPanel"><span>🗂️</span> Transaction History</button>
+  <button type="button" class="admin-nav-button" data-admin-page="documentManagementPanel"><span>📑</span> Document Management</button>
+  <button type="button" class="admin-nav-button" data-admin-page="appearanceManagementPanel"><span>🧾</span> Appearance Management</button>
+</nav>
+<div id="adminOverviewContent">
+
 <div id="dashboardError" class="notice error hidden" role="alert"></div>
 <div class="dashboard-section-title"><span>OVERVIEW</span><small>Live request statistics</small></div>
 <div class="stats-grid" id="dashboardStats">
@@ -1280,15 +1294,11 @@ button:focus-visible,a:focus-visible{outline:3px solid #F0D9FF!important;outline
   <div class="recent-foot" id="recentFoot">Showing the latest transactions</div>
 </div>
 
+</div>
 </section>
 
 
-<nav class="admin-nav hidden" id="adminNav" aria-label="Administrator navigation">
-  <button type="button" class="admin-nav-button active" data-admin-page="adminDashboard" aria-current="page"><span>📊</span> Overview</button>
-  <button type="button" class="admin-nav-button" data-admin-page="transactionHistoryPanel"><span>🗂️</span> Transaction History</button>
-  <button type="button" class="admin-nav-button" data-admin-page="documentManagementPanel"><span>📑</span> Document Management</button>
-  <button type="button" class="admin-nav-button" data-admin-page="appearanceManagementPanel"><span>🧾</span> Appearance Management</button>
-</nav>
+
 
 <section class="panel" id="transactionHistoryPanel">
   <div class="head">
@@ -1400,10 +1410,15 @@ setAppearanceDateToToday();
 document.documentElement.lang = 'en';
 function show(id){
   document.getElementById('home').style.display = id === 'home' ? '' : 'none';
-  document.querySelectorAll('.panel').forEach(panel => panel.classList.toggle('active', panel.id === id));
+  const adminPages = ['adminDashboard','transactionHistoryPanel','transactionDetailsPanel','documentManagementPanel','appearanceManagementPanel'];
+  document.querySelectorAll('.panel').forEach(panel => {
+    const keepAdminShell = panel.id === 'adminDashboard' && adminPages.includes(id);
+    panel.classList.toggle('active', panel.id === id || keepAdminShell);
+  });
+  const overviewContent = document.getElementById('adminOverviewContent');
+  if (overviewContent) overviewContent.classList.toggle('hidden', id !== 'adminDashboard');
   const shortcuts = document.getElementById('headerShortcuts');
   if (shortcuts) shortcuts.classList.toggle('hidden', id !== 'home');
-  const adminPages = ['adminDashboard','transactionHistoryPanel','transactionDetailsPanel','documentManagementPanel','appearanceManagementPanel'];
   const adminNav = document.getElementById('adminNav');
   if (adminNav) {
     adminNav.classList.toggle('hidden', !adminPages.includes(id));
