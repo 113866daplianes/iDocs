@@ -1097,6 +1097,64 @@ button:focus-visible,a:focus-visible{outline:3px solid #F0D9FF!important;outline
 #adminOverviewContent.hidden{display:none!important}
 #adminDashboard.active{display:block}
 
+
+/* ===== Printing countdown dialog: high-contrast Purple Aero ===== */
+#printReminderOverlay .reminder-card{
+  color:#FFFFFF!important;
+  background:
+    radial-gradient(ellipse at 50% 0%,rgba(235,204,255,.42),transparent 19rem),
+    linear-gradient(180deg,#A85BD2 0%,#70269B 42%,#3C105D 100%)!important;
+  border:1px solid rgba(255,255,255,.72)!important;
+  box-shadow:0 7px 0 #210633,0 24px 58px rgba(8,1,15,.48),
+    inset 0 3px 0 rgba(255,255,255,.62),inset 0 -4px 0 rgba(20,3,32,.34)!important;
+}
+#printReminderOverlay .reminder-card h2{
+  color:#FFFFFF!important;
+  text-shadow:0 2px 4px rgba(24,3,39,.48)!important;
+  font-weight:900;
+}
+#printReminderOverlay .reminder-card p{
+  color:#FFF8FF!important;
+  text-shadow:0 1px 3px rgba(24,3,39,.42)!important;
+}
+#printReminderOverlay #countdownCaption{
+  display:block;color:#FFFFFF!important;font-weight:800;
+  text-shadow:0 1px 3px rgba(24,3,39,.55)!important;
+  margin:8px 0 14px;
+}
+#printReminderOverlay .countdown-ring{
+  background:conic-gradient(#F4D9FF var(--progress),rgba(255,255,255,.24) 0)!important;
+  box-shadow:0 7px 0 rgba(29,5,47,.42),0 12px 22px rgba(16,2,27,.30),
+    inset 0 2px 0 rgba(255,255,255,.55)!important;
+}
+#printReminderOverlay .countdown-ring:before{
+  background:linear-gradient(145deg,#FFFFFF 0%,#F3E5FF 100%)!important;
+  box-shadow:inset 0 2px 5px rgba(65,20,91,.12);
+}
+#printReminderOverlay .countdown-ring strong{
+  color:#42105F!important;text-shadow:none!important;font-weight:950;
+}
+#printReminderOverlay .countdown-actions .secondary{
+  color:#35104F!important;
+  background:linear-gradient(180deg,#FFFFFF 0%,#F0E0FF 55%,#D7B5F0 100%)!important;
+  border:1px solid #FFFFFF!important;
+  box-shadow:0 4px 0 #5B287B,0 8px 14px rgba(15,2,25,.28),inset 0 2px 0 #FFFFFF!important;
+}
+#printReminderOverlay .countdown-actions .primary{
+  color:#FFFFFF!important;
+  background:linear-gradient(180deg,#D6A0FA 0%,#963ED0 48%,#5B168D 100%)!important;
+  border:1px solid rgba(255,255,255,.88)!important;
+  box-shadow:0 4px 0 #2C0845,0 8px 14px rgba(15,2,25,.32),inset 0 2px 0 rgba(255,255,255,.55)!important;
+}
+@media(max-width:600px){
+  #printReminderOverlay{padding:14px}
+  #printReminderOverlay .reminder-card{padding:25px 18px}
+  #printReminderOverlay .reminder-card h2{font-size:21px;line-height:1.25}
+  #printReminderOverlay .reminder-card p{font-size:14px;line-height:1.65}
+  #printReminderOverlay .countdown-actions{gap:9px}
+  #printReminderOverlay .countdown-actions button{min-height:46px;flex:1 1 100%}
+}
+
 </style>
   <link rel="icon" type="image/png" sizes="512x512" href="./iDocs-icon.png">
   <link rel="apple-touch-icon" href="./iDocs-icon.png">
