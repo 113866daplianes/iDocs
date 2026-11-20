@@ -991,6 +991,106 @@ button:focus-visible,a:focus-visible{outline:3px solid #F0D9FF!important;outline
   .panel,.menu,.choice,.selection-dialog,.history-popup-card{box-shadow:0 4px 0 rgba(22,4,36,.68),0 9px 18px rgba(10,1,17,.30),inset 0 2px 0 rgba(255,255,255,.42)!important}
 }
 
+
+/* ===== Admin navigation pages and readable Purple Aero surfaces ===== */
+.admin-nav{
+  display:flex;flex-wrap:wrap;gap:10px;margin:18px 0 22px;padding:12px;
+  border-radius:18px;
+  background:linear-gradient(180deg,rgba(239,216,255,.26),rgba(67,19,103,.70));
+  border:1px solid rgba(255,255,255,.48);
+  box-shadow:0 5px 0 rgba(20,3,33,.55),0 12px 24px rgba(10,1,17,.26),inset 0 2px 0 rgba(255,255,255,.36);
+  backdrop-filter:blur(16px) saturate(145%);
+}
+.admin-nav.hidden{display:none!important}
+.admin-nav-button{
+  display:inline-flex;align-items:center;justify-content:center;gap:9px;
+  min-height:48px;padding:11px 18px;border-radius:12px;cursor:pointer;
+  color:#35104F!important;font:inherit;font-weight:850;
+  background:linear-gradient(180deg,#fff 0%,#F0E3FC 52%,#D8B9F1 100%)!important;
+  border:1px solid #fff!important;
+  box-shadow:0 4px 0 #8D5AB2,0 7px 13px rgba(17,3,27,.25),inset 0 2px 0 #fff!important;
+  transition:transform .18s,filter .18s,box-shadow .18s;
+}
+.admin-nav-button:hover{filter:brightness(1.07);transform:translateY(-2px)}
+.admin-nav-button.active{
+  color:#fff!important;
+  background:linear-gradient(180deg,#D8A8FA 0%,#9A4AD8 48%,#5B1B96 100%)!important;
+  border-color:rgba(255,255,255,.9)!important;
+  box-shadow:0 4px 0 #351052,0 8px 15px rgba(12,2,21,.34),inset 0 2px 0 rgba(255,255,255,.62)!important;
+}
+.admin-nav-button span{font-size:18px}
+#adminDashboard .admin-welcome{
+  color:#35104F!important;background:linear-gradient(135deg,#fff 0%,#F1E3FF 100%)!important;
+  border:1px solid #fff!important;box-shadow:0 5px 0 #9D76BE,0 10px 20px rgba(13,2,22,.22),inset 0 2px 0 #fff!important;
+}
+#adminDashboard .admin-welcome strong{color:#42136B!important}
+#adminDashboard .admin-welcome small{color:#665078!important}
+#adminDashboard .dashboard-section-title span,
+#adminDashboard .dashboard-section-title small{color:#F7EFFF!important;text-shadow:0 2px 3px rgba(18,2,30,.48)}
+#adminDashboard .stat-card,
+#adminDashboard .summary-card,
+#adminDashboard .recent-card{
+  color:#fff!important;
+  background:linear-gradient(180deg,#C18BE5 0%,#8135B2 22%,#4A176D 100%)!important;
+  border:1px solid rgba(255,255,255,.58)!important;
+  box-shadow:0 5px 0 #26083F,0 12px 23px rgba(8,1,15,.38),inset 0 3px 0 rgba(255,255,255,.58),inset 0 -4px 0 rgba(24,3,39,.35)!important;
+}
+#adminDashboard .stat-label,
+#adminDashboard .summary-heading strong,
+#adminDashboard .summary-heading small,
+#adminDashboard .recent-heading h3,
+#adminDashboard .recent-heading p,
+#adminDashboard .recent-foot{color:#fff!important;text-shadow:0 1px 3px rgba(18,2,30,.42)}
+#adminDashboard .stat-value,
+#adminDashboard .summary-number{color:#fff!important;text-shadow:0 2px 5px rgba(18,2,30,.55)}
+#adminDashboard .stat-icon,#adminDashboard .summary-icon{filter:drop-shadow(0 2px 2px rgba(10,1,17,.35))}
+#adminDashboard .recent-table th{
+  color:#fff!important;background:linear-gradient(180deg,#D09BEF,#7725A7)!important;
+}
+#adminDashboard .recent-table td{
+  color:#2F1B3E!important;background:#fff!important;border-color:#E6D8EF!important;
+}
+#adminDashboard .recent-table .table-empty{color:#69577A!important}
+#adminDashboard .recent-card .secondary{
+  color:#35104F!important;background:linear-gradient(180deg,#fff,#EAD8FA)!important;
+}
+.admin-placeholder-panel .admin-coming-soon{
+  min-height:340px;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;gap:12px;padding:42px 24px;margin-top:14px;border-radius:22px;
+  color:#fff;background:
+    radial-gradient(ellipse at 50% 0%,rgba(239,211,255,.34),transparent 25rem),
+    linear-gradient(180deg,#A85ED3 0%,#6A2695 52%,#3A1058 100%);
+  border:1px solid rgba(255,255,255,.62);
+  box-shadow:0 6px 0 #210635,0 16px 28px rgba(8,1,15,.34),inset 0 3px 0 rgba(255,255,255,.48),inset 0 -4px 0 rgba(20,3,32,.3);
+}
+.admin-coming-icon{
+  width:86px;height:86px;display:grid;place-items:center;border-radius:25px;font-size:42px;
+  background:linear-gradient(145deg,#fff,#D8B7F1);
+  border:1px solid #fff;box-shadow:0 6px 0 #48156A,0 12px 20px rgba(8,1,15,.28),inset 0 3px 0 #fff;
+}
+.admin-coming-label{font-size:11px;font-weight:950;letter-spacing:2px;color:#F2DFFF}
+.admin-coming-soon h3{font-size:clamp(22px,3vw,30px);margin:0;color:#fff;text-shadow:0 2px 4px rgba(18,2,30,.4)}
+.admin-coming-soon p{max-width:580px;line-height:1.65;color:#F8EDFF;margin:0}
+.admin-coming-pill{
+  margin-top:8px;padding:9px 18px;border-radius:999px;color:#35104F;font-weight:900;
+  background:linear-gradient(180deg,#fff,#DCC1F2);border:1px solid #fff;
+  box-shadow:0 4px 0 #48156A,0 7px 13px rgba(8,1,15,.25),inset 0 2px 0 #fff;
+}
+#appDateDisplay[readonly]{
+  color:#4B365D!important;background:linear-gradient(180deg,#fff,#F3EAFB)!important;
+  cursor:not-allowed;opacity:1;
+}
+@media(max-width:760px){
+  .admin-nav{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;padding:10px}
+  .admin-nav-button{min-height:48px;padding:9px 7px;font-size:12px;gap:6px}
+  .admin-nav-button span{font-size:16px}
+  .admin-placeholder-panel .admin-coming-soon{min-height:280px;padding:30px 18px}
+}
+@media(max-width:420px){
+  .admin-nav{grid-template-columns:1fr 1fr}
+  .admin-nav-button{font-size:11px}
+}
+
 </style>
   <link rel="icon" type="image/png" sizes="512x512" href="./iDocs-icon.png">
   <link rel="apple-touch-icon" href="./iDocs-icon.png">
@@ -1040,7 +1140,12 @@ button:focus-visible,a:focus-visible{outline:3px solid #F0D9FF!important;outline
   <form id="appearanceForm" novalidate>
     <div class="fields">
       <div class="field full"><label for="appName">Full name *</label><input id="appName" maxlength="150" autocomplete="name" placeholder="Enter your full name" required></div>
-      <div class="field"><label for="appDate">Date of appearance *</label><input id="appDate" type="date" required></div>
+      <div class="field">
+        <label for="appDateDisplay">Date of appearance</label>
+        <input id="appDateDisplay" type="text" readonly aria-readonly="true" value="Today">
+        <input id="appDateISO" type="hidden">
+        <small class="field-hint">Automatically set to today's date. This cannot be changed.</small>
+      </div>
       <div class="field"><label for="appPurpose">Purpose *</label><input id="appPurpose" maxlength="500" placeholder="Reason for appearance" required></div>
     </div>
     <div class="notice">Please check your details before submitting. Your request will be recorded as Pending.</div>
@@ -1174,13 +1279,16 @@ button:focus-visible,a:focus-visible{outline:3px solid #F0D9FF!important;outline
   </div>
   <div class="recent-foot" id="recentFoot">Showing the latest transactions</div>
 </div>
-<div class="dashboard-section-title tools-title"><span>ADMINISTRATION</span><small>Management tools will be added in the next stages</small></div>
-<div class="admin-tools-grid">
-  <div class="admin-tool-card"><span>🗂️</span><strong>Transaction History</strong><small>Search and manage submitted requests</small><em>Coming in Stage 3</em></div>
-  <div class="admin-tool-card"><span>📑</span><strong>Document Management</strong><small>Review document types and templates</small><em>Phase 2 upgrade</em></div>
-  <div class="admin-tool-card"><span>🧾</span><strong>Appearance Management</strong><small>Process appearance certificate requests</small><em>Coming in Stage 4</em></div>
-</div>
+
 </section>
+
+
+<nav class="admin-nav hidden" id="adminNav" aria-label="Administrator navigation">
+  <button type="button" class="admin-nav-button active" data-admin-page="adminDashboard" aria-current="page"><span>📊</span> Overview</button>
+  <button type="button" class="admin-nav-button" data-admin-page="transactionHistoryPanel"><span>🗂️</span> Transaction History</button>
+  <button type="button" class="admin-nav-button" data-admin-page="documentManagementPanel"><span>📑</span> Document Management</button>
+  <button type="button" class="admin-nav-button" data-admin-page="appearanceManagementPanel"><span>🧾</span> Appearance Management</button>
+</nav>
 
 <section class="panel" id="transactionHistoryPanel">
   <div class="head">
@@ -1231,6 +1339,35 @@ button:focus-visible,a:focus-visible{outline:3px solid #F0D9FF!important;outline
   <div class="status" id="detailsStatusMessage" role="status" aria-live="polite"></div>
 </section>
 
+
+<section class="panel admin-placeholder-panel" id="documentManagementPanel">
+  <div class="head">
+    <div><h2>Document Management</h2><p>Manage document types, requirements, and certificate templates.</p></div>
+    <button class="back" type="button" data-admin-page="adminDashboard">← Overview</button>
+  </div>
+  <div class="admin-coming-soon">
+    <span class="admin-coming-icon" aria-hidden="true">📑</span>
+    <span class="admin-coming-label">PHASE 2 FEATURE</span>
+    <h3>Document Management is coming soon</h3>
+    <p>This section will provide tools for managing document types, form requirements, and PDF templates.</p>
+    <span class="admin-coming-pill">Coming Soon</span>
+  </div>
+</section>
+
+<section class="panel admin-placeholder-panel" id="appearanceManagementPanel">
+  <div class="head">
+    <div><h2>Appearance Management</h2><p>Manage Certificate of Appearance requests and records.</p></div>
+    <button class="back" type="button" data-admin-page="adminDashboard">← Overview</button>
+  </div>
+  <div class="admin-coming-soon">
+    <span class="admin-coming-icon" aria-hidden="true">🧾</span>
+    <span class="admin-coming-label">PHASE 1 · STAGE 4</span>
+    <h3>Appearance Management is coming soon</h3>
+    <p>This section will provide dedicated tools for reviewing and managing Certificates of Appearance.</p>
+    <span class="admin-coming-pill">Coming Soon</span>
+  </div>
+</section>
+
 <div class="history-popup" id="historyPickerModal" aria-hidden="true">
   <div class="history-popup-card" role="dialog" aria-modal="true" aria-labelledby="historyPickerTitle">
     <div class="selection-dialog-head"><h3 id="historyPickerTitle">Choose filter</h3><button class="selection-close" id="historyPickerClose" type="button" aria-label="Close">×</button></div>
@@ -1246,14 +1383,47 @@ button:focus-visible,a:focus-visible{outline:3px solid #F0D9FF!important;outline
 <script src="https://cdn.jsdelivr.net/npm/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
 <script>
 const API_URL='https://script.google.com/macros/s/AKfycbzlO9BLGTiydq8Gr62kJ2_PVkZpj89bt2V4av7kNoUOTeF-TcpWXRIjtvRSZUReSFW4/exec';
+
+function setAppearanceDateToToday(){
+  const now = new Date();
+  const year = now.getFullYear();
+  const month = String(now.getMonth()+1).padStart(2,'0');
+  const day = String(now.getDate()).padStart(2,'0');
+  const iso = `${year}-${month}-${day}`;
+  const display = document.getElementById('appDateDisplay');
+  const hidden = document.getElementById('appDateISO');
+  if (hidden) hidden.value = iso;
+  if (display) display.value = now.toLocaleDateString('en-PH',{year:'numeric',month:'long',day:'numeric'});
+}
+setAppearanceDateToToday();
+
 document.documentElement.lang = 'en';
 function show(id){
   document.getElementById('home').style.display = id === 'home' ? '' : 'none';
   document.querySelectorAll('.panel').forEach(panel => panel.classList.toggle('active', panel.id === id));
   const shortcuts = document.getElementById('headerShortcuts');
   if (shortcuts) shortcuts.classList.toggle('hidden', id !== 'home');
+  const adminPages = ['adminDashboard','transactionHistoryPanel','transactionDetailsPanel','documentManagementPanel','appearanceManagementPanel'];
+  const adminNav = document.getElementById('adminNav');
+  if (adminNav) {
+    adminNav.classList.toggle('hidden', !adminPages.includes(id));
+    adminNav.querySelectorAll('[data-admin-page]').forEach(button => {
+      const active = button.dataset.adminPage === id ||
+        (id === 'transactionDetailsPanel' && button.dataset.adminPage === 'transactionHistoryPanel');
+      button.classList.toggle('active', active);
+      if (active) button.setAttribute('aria-current','page');
+      else button.removeAttribute('aria-current');
+    });
+  }
   window.scrollTo({top:0, behavior:'smooth'});
 }
+document.querySelectorAll('[data-admin-page]').forEach(button => {
+  button.addEventListener('click', () => {
+    const target = button.dataset.adminPage;
+    if (target === 'transactionHistoryPanel') openTransactionHistory();
+    else show(target);
+  });
+});
 document.getElementById('requestMenu').onclick=()=>show('requestPanel');document.getElementById('adminMenu').onclick=()=>show('adminPanel');
 document.querySelectorAll('[data-home]').forEach(b=>b.onclick=()=>show('home'));document.querySelectorAll('[data-request]').forEach(b=>b.onclick=()=>show('requestPanel'));document.querySelectorAll('[data-docs]').forEach(b=>b.onclick=()=>show('documentsPanel'));
 document.getElementById('schoolDocs').onclick=()=>{show('documentsPanel');loadTypes()};document.getElementById('appearance').onclick=()=>show('appearancePanel');
@@ -1886,14 +2056,16 @@ document.getElementById('finishPrintingButton').addEventListener('click', async 
     'Your paper has been handed over. You may now proceed to the Client Satisfaction Measurement System.';
 });
 
+document.getElementById('appearanceForm').addEventListener('reset', setAppearanceDateToToday);
 document.getElementById('appearanceForm').addEventListener('submit', async event => {
   event.preventDefault();
   const form = event.currentTarget;
   const button = document.getElementById('appearanceSubmit');
   if (!form.reportValidity()) return;
+  setAppearanceDateToToday();
   const data = {
     Name: inputValue('appName'),
-    AppearanceDate: inputValue('appDate'),
+    AppearanceDate: inputValue('appDateISO'),
     Purpose: inputValue('appPurpose')
   };
   setSubmitting(button, true, 'Submit request');
