@@ -1155,6 +1155,60 @@ button:focus-visible,a:focus-visible{outline:3px solid #F0D9FF!important;outline
   #printReminderOverlay .countdown-actions button{min-height:46px;flex:1 1 100%}
 }
 
+
+/* ===== Print and completion screens: enforce readable Purple Aero contrast ===== */
+#printingPanel .print-step{
+  color:#FFF!important;
+  background:
+    radial-gradient(ellipse at 85% 0%,rgba(255,255,255,.18),transparent 24rem),
+    linear-gradient(180deg,#A45ACF 0%,#71309D 48%,#451365 100%)!important;
+  border:1px solid rgba(255,255,255,.72)!important;
+  box-shadow:0 5px 0 #26083F,0 13px 25px rgba(10,1,17,.34),
+    inset 0 3px 0 rgba(255,255,255,.48),inset 0 -4px 0 rgba(22,4,36,.32)!important;
+}
+#printingPanel .print-step h3,
+#printingPanel .print-step p,
+#printingPanel .print-step .status{
+  color:#FFF!important;
+  opacity:1!important;
+  text-shadow:0 1px 3px rgba(22,4,36,.45)!important;
+}
+#printingPanel .print-step p{font-size:14px!important;line-height:1.7!important}
+#thankYouPanel h2,
+#thankYouPanel p,
+#thankYouPanel #redirectStatus{
+  color:#FFF!important;
+  opacity:1!important;
+  text-shadow:0 1px 3px rgba(24,4,39,.48)!important;
+}
+#thankYouPanel .thankyou-mark{
+  color:#176B3A!important;
+  background:linear-gradient(145deg,#F2FFF7,#C9F0D9)!important;
+  border:1px solid #FFF!important;
+  box-shadow:0 5px 0 #276A49,0 10px 20px rgba(12,2,21,.28),
+    inset 0 2px 0 #FFF!important;
+}
+#thankYouPanel #proceedCsmButton{
+  color:#FFF!important;
+  text-shadow:0 1px 2px rgba(22,4,36,.45)!important;
+}
+
+
+/* Accessible rotating loading indicator for PDF generation and assembly */
+.button-spinner{
+  display:inline-block;width:18px;height:18px;flex:0 0 18px;
+  border:3px solid rgba(255,255,255,.38);
+  border-top-color:#FFF;border-right-color:#FFF;border-radius:50%;
+  vertical-align:-4px;margin-right:10px;
+  animation:idocs-spin .72s linear infinite;
+}
+@keyframes idocs-spin{to{transform:rotate(360deg)}}
+button.is-loading{cursor:wait;opacity:1!important;filter:brightness(1.06)}
+button.is-loading .button-spinner{vertical-align:middle}
+@media(prefers-reduced-motion:reduce){
+  .button-spinner{animation-duration:1.8s}
+}
+
 </style>
   <link rel="icon" type="image/png" sizes="512x512" href="./iDocs-icon.png">
   <link rel="apple-touch-icon" href="./iDocs-icon.png">
@@ -1979,7 +2033,9 @@ document.getElementById('confirmRequestButton').addEventListener('click', async 
 
   const button = document.getElementById('confirmRequestButton');
   button.disabled = true;
-  button.textContent = 'Confirming and generating PDFs…';
+  button.classList.add('is-loading');
+  button.setAttribute('aria-busy', 'true');
+  button.innerHTML = '<span class="button-spinner" aria-hidden="true"></span><span>Generating PDFs…</span>';
   setFormStatus('reviewStatus', 'Saving your request and preparing your documents. Please do not close this page.');
 
   try {
@@ -2024,6 +2080,8 @@ document.getElementById('confirmRequestButton').addEventListener('click', async 
     );
   } finally {
     button.disabled = false;
+    button.classList.remove('is-loading');
+    button.removeAttribute('aria-busy');
     button.textContent = 'Confirm';
   }
 });
@@ -2044,7 +2102,9 @@ async function startCombinedPdfPrinting() {
     }
 
     openButton.disabled = true;
-    openButton.textContent = 'Preparing Combined PDF…';
+    openButton.classList.add('is-loading');
+    openButton.setAttribute('aria-busy', 'true');
+    openButton.innerHTML = '<span class="button-spinner" aria-hidden="true"></span><span>Preparing Combined PDF…</span>';
     status.textContent = 'Combining the Request Slip and school document. Please wait…';
 
     const pdfBlob = await buildCombinedPdf(
@@ -2081,6 +2141,8 @@ async function startCombinedPdfPrinting() {
     openButton.classList.remove('hidden');
   } finally {
     openButton.disabled = false;
+    openButton.classList.remove('is-loading');
+    openButton.removeAttribute('aria-busy');
     openButton.textContent = 'Retry Opening Combined PDF';
   }
 }
