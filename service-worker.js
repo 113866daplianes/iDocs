@@ -1,4 +1,4 @@
-const CACHE_NAME = 'des-idocs-print-contrast-spinner-v7';
+const CACHE_NAME = 'des-idocs-admin-no-autoscroll-v8';
 const APP_SHELL = ['./','./index.html','./manifest.webmanifest','./iDocs-icon.png','./iApps-icon.png'];
 self.addEventListener('install', event => event.waitUntil(caches.open(CACHE_NAME).then(cache => cache.addAll(APP_SHELL)).then(() => self.skipWaiting())));
 self.addEventListener('activate', event => event.waitUntil(caches.keys().then(keys => Promise.all(keys.filter(key => key.startsWith('des-idocs-') && key !== CACHE_NAME).map(key => caches.delete(key)))).then(() => self.clients.claim())));
